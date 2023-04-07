@@ -1,18 +1,13 @@
 package co.uptc.edu.cine.model;
 
 public class Tickets {
-	private int price;
+	private Cinema infoCinema;
 
-	public int toPay() {
-		int pay = 0;
-		return pay;
+	public Cinema getInfoCinema() {
+		return infoCinema;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
+	public void setInfoCinema(Cinema infoCinema) {
+		this.infoCinema = infoCinema;
 	}
 }
