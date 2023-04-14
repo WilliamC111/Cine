@@ -3,15 +3,10 @@ package co.uptc.edu.cine.model;
 import java.util.ArrayList;
 
 public class Cinema {
-	public String cinema;
-	private Time time;
+	private Time timeMovie;
 	private ArrayList<Room> rooms;
 	private ArrayList<Movie> movies;
-	private Customer customer;
-
-	public String isTimeToMovie() {
-		return cinema;
-	}
+	private ArrayList<Customer> customers;
 
 	public boolean checkSeat() {
 		return false;
@@ -21,20 +16,12 @@ public class Cinema {
 
 	}
 
-	public String getCinema() {
-		return cinema;
-	}
-
 	public Time getTime() {
-		return time;
+		return timeMovie;
 	}
 
-	public void setCinema(String cinema) {
-		this.cinema = cinema;
-	}
-
-	public void setTime(Time time) {
-		this.time = time;
+	public void setTime(Time timeMovie) {
+		this.timeMovie = timeMovie;
 	}
 
 	public ArrayList<Room> getRooms() {
@@ -49,16 +36,16 @@ public class Cinema {
 		return movies;
 	}
 
-	public void setMovies(ArrayList<Movie> movies) {
-		this.movies = movies;
+	public void setMovies(Movie movie) {
+		this.movies.add(movie);
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public ArrayList<Customer> getCustomer() {
+		return customers;
 	}
 
 	public void setCustomer(Customer customer) {
-		this.customer = customer;
+		this.customers.add(customer);
 	}
 
 }
