@@ -1,5 +1,5 @@
 package co.uptc.edu.cine.view;
-
+import javax.swing.JOptionPane;
 public class View {
   public void showGraphicMessage(String message) {
 	        JOptionPane.showMessageDialog(null, message);
