@@ -61,12 +61,7 @@ public class Presenter {
 
 	public void ShowBillboard() {
 		Movie movie = new Movie();
-		movie.setIcon("Cine/src/resources/El_Gato_Con_Botas.jpg");
-		System.out.println(movie);
-	}
-
-	public void ShowCustomers() {
-		Movie movie = new Movie();
+		
 		movie.setNameMovies("El gato con botas");
 		movie.setDescription(
 				"""
@@ -82,7 +77,16 @@ public class Presenter {
 		movie.setIcon("Cine/src/resources/El_Gato_Con_Botas.jpg");
 
 		System.out.println(movie);
+	
 	}
+
+	public void ShowCustomers() {
+		Customer customer = new Customer();
+		customer.setName("Juan Ramirez");
+		customer.setID(123456789);
+		System.out.println(customer);
+	}
+
 
 	public static void main(String[] args) {
 		new Presenter();
