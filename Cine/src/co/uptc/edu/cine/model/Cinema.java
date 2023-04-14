@@ -12,10 +12,6 @@ public class Cinema {
 		return false;
 	}
 
-	public void cancelTicket() {
-
-	}
-
 	public Time getTime() {
 		return timeMovie;
 	}
