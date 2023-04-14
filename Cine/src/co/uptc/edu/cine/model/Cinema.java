@@ -1,5 +1,7 @@
 package co.uptc.edu.cine.model;
 
+import java.util.ArrayList;
+
 public class Cinema {
 public String cinema;
 	private int hour;
