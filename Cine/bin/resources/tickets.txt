@@ -1,0 +1,33 @@
+Cinema [timeMovie=co.uptc.edu.cine.model.Time@182decdb, rooms=[Sala 1
+
+Cintas:
+
+[Pelicula: El gato con botas
+descripcion:
+El Gato con Botas descubre que su pasión por la aventura le ha pasado factura: Ha agotado ocho de sus nueve vidas.
+El Gato con Botas se embarca en un viaje épico para encontrar al mítico Último Deseo y recuperar sus nueve vidas.
+
+Duracion: 1h 42min
+Generos: [Aventura, Animacion, Comedia]
+Formatos: [2D]
+Cine/src/resources/El_Gato_Con_Botas.jpg
+]
+], movies=[Pelicula: El gato con botas
+descripcion:
+El Gato con Botas descubre que su pasión por la aventura le ha pasado factura: Ha agotado ocho de sus nueve vidas.
+El Gato con Botas se embarca en un viaje épico para encontrar al mítico Último Deseo y recuperar sus nueve vidas.
+
+Duracion: 1h 42min
+Generos: [Aventura, Animacion, Comedia]
+Formatos: [2D]
+Cine/src/resources/El_Gato_Con_Botas.jpg
+, Pelicula: Todo en todas partes al mismo tiempo
+descripcion:
+Una inmigrante china de mediana edad se ve envuelta en una loca aventura, donde ella sola puede
+salvar el mundo explorando otros universos que se conectan con sus vidas pasadas.
+
+Duracion: 2h 19min
+Generos: [Comedia, Accion, Aventura]
+Formatos: [2D, 3D, IMAX]
+null
+], customers=[]]

@@ -59,6 +59,12 @@ public class Cinema {
 		rooms.get(roomNumber - 1).addMovie(movie);
 	}
 
+	@Override
+	public String toString() {
+		return "Cinema [timeMovie=" + timeMovie + ", rooms=" + rooms + ", movies=" + movies + ", customers=" + customers
+				+ "]";
+	}
+
 	public static void main(String[] args) {
 		Cinema cinema = new Cinema();
 
