@@ -8,40 +8,42 @@ public class Cinema {
 	private ArrayList<Movie> movies;
 	private ArrayList<Customer> customers;
 
-	public boolean checkSeat() {
-		return false;
+	public Cinema() {
+		rooms = new ArrayList<Room>();
+		movies = new ArrayList<Movie>();
+		customers = new ArrayList<Customer>();
 	}
 
-	public Time getTime() {
-		return timeMovie;
-	}
-
-	public void setTime(Time timeMovie) {
-		this.timeMovie = timeMovie;
+	public void addRoom(Room room) {
+		rooms.add(room);
 	}
 
 	public ArrayList<Room> getRooms() {
 		return rooms;
 	}
 
-	public void setRooms(ArrayList<Room> rooms) {
-		this.rooms = rooms;
+	public void setTime(int hourMovie, int minuteMovie) {
+		timeMovie = new Time();
+		timeMovie.setTime(hourMovie, minuteMovie);
 	}
 
-	public ArrayList<Movie> getMovies() {
-		return movies;
+	public String getTime() {
+		return timeMovie.getFilmTime();
 	}
 
 	public void setMovies(Movie movie) {
 		this.movies.add(movie);
 	}
 
-	public ArrayList<Customer> getCustomer() {
-		return customers;
+	public ArrayList<Movie> getMovies() {
+		return movies;
 	}
 
 	public void setCustomer(Customer customer) {
 		this.customers.add(customer);
 	}
 
+	public ArrayList<Customer> getCustomer() {
+		return customers;
+	}
 }
