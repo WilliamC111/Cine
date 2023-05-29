@@ -33,7 +33,7 @@ public class ImageViewer {
     private void showImages() {
         JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayout(1, 3));
-        ImageIcon image1 = new ImageIcon(getClass().getResource("/resources/action/Image1.jpg"));
+        ImageIcon image1 = new ImageIcon(getClass().getResource("/resources/action/image1.jpg"));
         Image scaledImage1 = image1.getImage().getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
         JLabel label1 = new JLabel(scaledIcon1);
