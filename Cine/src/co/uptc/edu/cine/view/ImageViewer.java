@@ -130,4 +130,8 @@ public class ImageViewer {
     public static void main(String[] args) {
         new ImageViewer();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a913855a2fa90127487232de7d0e9b987fa56e1a
