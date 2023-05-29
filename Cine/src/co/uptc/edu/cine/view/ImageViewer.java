@@ -1,4 +1,5 @@
 package co.uptc.edu.cine.view;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -11,8 +12,8 @@ import javax.swing.JTabbedPane;
 public class ImageViewer {
     private JFrame frame;
     private JTabbedPane tabbedPane;
-    private int imageWidth = 200; 
-    private int imageHeight = 300; 
+    private int imageWidth = 200;
+    private int imageHeight = 300;
 
     public ImageViewer() {
         initialize();
@@ -38,7 +39,7 @@ public class ImageViewer {
         ImageIcon scaledIcon1 = new ImageIcon(scaledImage1);
         JLabel label1 = new JLabel(scaledIcon1);
         panel1.add(label1);
-        panel1.setBackground(new Color(42, 42, 42)); 
+        panel1.setBackground(new Color(42, 42, 42));
 
         ImageIcon image2 = new ImageIcon(getClass().getResource("/resources/action/image2.jpg"));
         Image scaledImage2 = image2.getImage().getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH);
@@ -53,7 +54,6 @@ public class ImageViewer {
         panel1.add(label3);
 
         tabbedPane.addTab("Acción", panel1);
-
 
         JPanel panel2 = new JPanel();
         panel2.setLayout(new GridLayout(1, 3));
@@ -77,8 +77,6 @@ public class ImageViewer {
         panel2.add(label6);
 
         tabbedPane.addTab("Ciencia Ficción", panel2);
-
-
 
         JPanel panel3 = new JPanel();
         panel3.setLayout(new GridLayout(1, 3));
@@ -130,8 +128,4 @@ public class ImageViewer {
     public static void main(String[] args) {
         new ImageViewer();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a913855a2fa90127487232de7d0e9b987fa56e1a

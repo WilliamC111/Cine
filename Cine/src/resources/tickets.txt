@@ -1,4 +1,4 @@
-Cinema [timeMovie=co.uptc.edu.cine.model.Time@182decdb, rooms=[Sala 1
+Cinema [timeMovie=co.uptc.edu.cine.model.Time@6f75e721, rooms=[Sala 1
 
 Cintas:
 
