@@ -24,7 +24,7 @@ public class Time {
     public static void main(String[] args) {
         Time time = new Time();
         System.out.println(time.getFormatter());
-        time.setTime(12, 30);
+        time.setTime(18, 30);
         System.out.println(time.getFilmTime());
     }
 }

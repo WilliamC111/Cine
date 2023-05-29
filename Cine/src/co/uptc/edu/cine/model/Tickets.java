@@ -70,6 +70,7 @@ public class Tickets {
 		System.out.println(room);
 		cinema.showMovies();
 		cinema.setTime(11, 30);
+		System.out.println("La pelicula inicia " + cinema.getTime());
 
 		tickets.setInfoCinema(cinema);
 		tickets.writeNewTxT("Cine/Cine/src/resources/tickets.txt");
