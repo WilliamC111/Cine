@@ -7,7 +7,11 @@ public class Cinema {
 	private ArrayList<Room> rooms;
 	private ArrayList<Movie> movies;
 	private ArrayList<Customer> customers;
-	public static final double TICKET_PRICE = 10000;
+	private final int TWOD_PRICE = 9000;
+	private final int THREED_PRICE = 12000;
+	private final int IMAX_PRICE = 15000;
+	private final int FOURK_PRICE = 15000;
+	private final int ULTRATWOD_PRICE = 12000;
 
 	public Cinema() {
 		rooms = new ArrayList<Room>();
@@ -59,6 +63,28 @@ public class Cinema {
 		rooms.get(roomNumber - 1).addMovie(movie);
 	}
 
+	public int buyTickets(int quantityTickets, int roomNumber, int movieNumber, MovieFormat movieFormat){
+		int total = 0;
+		Movie movie = getMovies().get(movieNumber - 1);
+		Room room = rooms.get(roomNumber - 1);
+		if (movie.getMovieFormat().contains(MovieFormat.TWO_D.getName()) && movieFormat == MovieFormat.TWO_D) {
+			total += quantityTickets * TWOD_PRICE;
+		}
+		if (movie.getMovieFormat().contains(MovieFormat.THREE_D.getName()) && movieFormat == MovieFormat.THREE_D) {
+			total += quantityTickets * THREED_PRICE;
+		}
+		if (movie.getMovieFormat().contains(MovieFormat.IMAX.getName()) && movieFormat == MovieFormat.IMAX) {
+			total += quantityTickets * IMAX_PRICE;
+		}
+		if (movie.getMovieFormat().contains(MovieFormat.FOUR_K.getName()) && movieFormat == MovieFormat.FOUR_K) {
+			total += quantityTickets * FOURK_PRICE;
+		}
+		if (movie.getMovieFormat().contains(MovieFormat.ULTRA_TWO_D.getName()) && movieFormat == MovieFormat.ULTRA_TWO_D) {
+			total += quantityTickets * ULTRATWOD_PRICE;
+		}
+		return total;
+	}
+
 	@Override
 	public String toString() {
 		return "Cinema [timeMovie=" + timeMovie + ", rooms=" + rooms + ", movies=" + movies + ", customers=" + customers
@@ -80,7 +106,8 @@ public class Cinema {
 		movie.setMovieGenders(MovieGender.ANIMATION);
 		movie.setMovieGenders(MovieGender.COMEDY);
 		movie.setMovieFormat(MovieFormat.TWO_D);
-		movie.setIcon("Cine/src/resources/El_Gato_Con_Botas.jpg");
+		movie.setMovieFormat(MovieFormat.THREE_D);
+		movie.setIcon("Cine/Cine/src/resources/Movies/El_Gato_Con_Botas.jpg");
 
 		Movie movie2 = new Movie();
 		movie2.setNameMovies("Todo en todas partes al mismo tiempo");
@@ -109,5 +136,7 @@ public class Cinema {
 		room.getMovies();
 		System.out.println(room);
 		cinema.showMovies();
+
+		System.out.println(cinema.buyTickets(2, 1, 1, MovieFormat.THREE_D));
 	}
 }

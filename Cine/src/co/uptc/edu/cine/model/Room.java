@@ -34,15 +34,15 @@ public class Room {
 
 	public void reserveSeats(char row, int seat) {
 		int rowIndex = row - 'A';
-        int seatIndex = seat - 1;
-        Seat selectedSeat = seats[rowIndex][seatIndex];
-        if (selectedSeat.getRow() == 'X') {
-            System.out.println("El asiento ya está reservado.");
-        } else {
-            selectedSeat.setRow('X');
-            selectedSeat.setSeat(0);
-            System.out.println("El asiento " + row + seat + " se ha reservado.");
-        }
+		int seatIndex = seat - 1;
+		Seat selectedSeat = seats[rowIndex][seatIndex];
+		if (selectedSeat.getRow() == 'X') {
+			System.out.println("El asiento ya está reservado.");
+		} else {
+			selectedSeat.setRow('X');
+			selectedSeat.setSeat(0);
+			System.out.println("El asiento " + row + seat + " se ha reservado.");
+		}
 	}
 
 	public void addMovie(Movie movie) {

@@ -17,7 +17,7 @@ public class AddMovieMenu {
 
     public AddMovieMenu() {
         mainFont = new Font("Arial", Font.BOLD, 50);
-        mainColor = new Color(120, 199, 225);
+        mainColor = new Color(42, 42, 42);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
 
         addMovieFrame = new JFrame();
@@ -35,7 +35,6 @@ public class AddMovieMenu {
     public void createMovie() {
         addMoviePanel = new JPanel();
         addMoviePanel.setBackground(mainColor);
-        
 
         addMovieFrame.add(addMoviePanel);
     }
