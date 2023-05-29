@@ -107,7 +107,7 @@ public class Cinema {
 		movie.setMovieGenders(MovieGender.COMEDY);
 		movie.setMovieFormat(MovieFormat.TWO_D);
 		movie.setMovieFormat(MovieFormat.THREE_D);
-		movie.setIcon("Cine/src/resources/El_Gato_Con_Botas.jpg");
+		movie.setIcon("Cine/Cine/src/resources/Movies/El_Gato_Con_Botas.jpg");
 
 		Movie movie2 = new Movie();
 		movie2.setNameMovies("Todo en todas partes al mismo tiempo");
