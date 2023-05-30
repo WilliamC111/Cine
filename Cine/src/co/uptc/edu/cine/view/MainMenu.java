@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
 import javax.swing.*;
 
 public class MainMenu {
@@ -17,8 +16,7 @@ public class MainMenu {
     private JLabel titleLabel, loginLabel, userLabel, passwordLabel;
     private JTextField userText;
     private JPasswordField passwordText;
-    private JButton loginButton, addButton, saleButton, historyButton;
-
+    private JButton loginButton, addButton,billBoardButton, saleButton, historyButton;
     private ImageViewer imageViewer;
     private AddMovieMenu addMovieMenu;
 
@@ -147,6 +145,19 @@ public class MainMenu {
         addButtonConstraints.insets.bottom = 20;
         mainPanel.add(addButton, addButtonConstraints);
 
+        billBoardButton = new JButton("Cartelera");
+        billBoardButton.setFont(new Font("Arial", Font.BOLD, 30));
+        billBoardButton.setForeground(mainColor);
+        billBoardButton.setBackground(Color.WHITE);
+        billBoardButton.setFocusPainted(false);
+        GridBagConstraints billBoardButtonConstraints = new GridBagConstraints();
+        billBoardButtonConstraints.gridx = 0;
+        billBoardButtonConstraints.gridy = 2;
+        billBoardButtonConstraints.gridwidth = 0;
+        billBoardButtonConstraints.anchor = GridBagConstraints.CENTER;
+        billBoardButtonConstraints.insets.bottom = 20;
+        mainPanel.add(billBoardButton, billBoardButtonConstraints);
+
         saleButton = new JButton("Venta de Boletas");
         saleButton.setFont(new Font("Arial", Font.BOLD, 30));
         saleButton.setForeground(mainColor);
@@ -154,7 +165,7 @@ public class MainMenu {
         saleButton.setFocusPainted(false);
         GridBagConstraints saleButtonConstraints = new GridBagConstraints();
         saleButtonConstraints.gridx = 0;
-        saleButtonConstraints.gridy = 2;
+        saleButtonConstraints.gridy = 3;
         saleButtonConstraints.gridwidth = 0;
         saleButtonConstraints.anchor = GridBagConstraints.CENTER;
         saleButtonConstraints.insets.bottom = 20;
@@ -167,7 +178,7 @@ public class MainMenu {
         historyButton.setFocusPainted(false);
         GridBagConstraints historyButtonConstraints = new GridBagConstraints();
         historyButtonConstraints.gridx = 0;
-        historyButtonConstraints.gridy = 3;
+        historyButtonConstraints.gridy = 4;
         historyButtonConstraints.gridwidth = 0;
         historyButtonConstraints.anchor = GridBagConstraints.CENTER;
         historyButtonConstraints.insets.bottom = 20;
@@ -215,7 +226,10 @@ public class MainMenu {
     public JButton getAddButton() {
         return addButton;
     }
-
+    
+     public JButton getBillBoardButton(){
+     return billBoardButton;
+    }
     public JButton getSaleButton() {
         return saleButton;
     }

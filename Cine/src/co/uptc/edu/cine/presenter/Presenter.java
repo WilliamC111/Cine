@@ -62,20 +62,6 @@ public class Presenter {
 
 	public void ShowBillboard() {
 		Movie movie = new Movie();
-		
-		movie.setNameMovies("El gato con botas");
-		movie.setDescription(
-				"""
-						El Gato con Botas descubre que su pasión por la aventura le ha pasado factura: Ha agotado ocho de sus nueve vidas.
-						El Gato con Botas se embarca en un viaje épico para encontrar al mítico Último Deseo y recuperar sus nueve vidas.
-						""");
-		movie.setTimeMovie("1h 42min");
-		movie.setMovieGenders(MovieGender.ADVENTURE);
-		movie.setMovieGenders(MovieGender.ANIMATION);
-		movie.setMovieGenders(MovieGender.COMEDY);
-		movie.setMovieFormat(MovieFormat.TWO_D);
-
-		movie.setIcon("Cine/src/resources/El_Gato_Con_Botas.jpg");
 
 		System.out.println(movie);
 	
