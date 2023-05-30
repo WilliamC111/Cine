@@ -38,6 +38,8 @@ public class MainMenu {
         InitialMenu();
 
         mainFrame.setVisible(true);
+
+        viewMovieLists();
     }
 
     public void InitialMenu() {

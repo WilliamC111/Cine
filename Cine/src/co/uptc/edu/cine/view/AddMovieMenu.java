@@ -44,12 +44,12 @@ public class AddMovieMenu {
         addMovieFrame.setResizable(false);
         addMovieFrame.setIconImage(mainIcon.getImage());
 
-        //createMovie();
+        // createMovie();
         addMovieOption();
 
         addMovieFrame.setVisible(true);
 
-        //deleteMovieOption();
+        // deleteMovieOption();
     }
 
     public void createMovie() {
@@ -103,7 +103,6 @@ public class AddMovieMenu {
 
         addMovieFrame.setSize(1000, 1000);
         addMovieFrame.setLocationRelativeTo(null);
-
 
         addMoviePanel = new JPanel(null);
         addMoviePanel.setBackground(mainColor);
@@ -446,7 +445,21 @@ public class AddMovieMenu {
         System.out.println((cinema.getMovies().isEmpty()) ? "No hay peliculas" : "Hay peliculas");
     }
 
-    public void editMovieOption(){
+    public void editMovieOption() {
+        JComboBox<Movie> movieList = new JComboBox<>(cinema.getMovies().toArray(new Movie[0]));
+        movieList.setRenderer(new DefaultListCellRenderer() {
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                    boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Movie) {
+                    Movie movie = (Movie) value;
+                    setText(movie.getNameMovies());
+                }
+                return this;
+            }
+        });
+        JOptionPane.showMessageDialog(null, movieList, "Seleccione la película a editar",
+                JOptionPane.QUESTION_MESSAGE);
         
     }
 
