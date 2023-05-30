@@ -19,6 +19,9 @@ public class MainMenu {
     private JPasswordField passwordText;
     private JButton loginButton, addButton, saleButton, historyButton;
 
+    private ImageViewer imageViewer;
+    private AddMovieMenu addMovieMenu;
+
     public MainMenu() {
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(42, 42, 42);
@@ -169,6 +172,14 @@ public class MainMenu {
         mainPanel.add(historyButton, historyButtonConstraints);
 
         mainFrame.setContentPane(mainPanel);
+    }
+
+    public void addMovieMenu() {
+        addMovieMenu = new AddMovieMenu();
+    }
+
+    public void viewMovieLists(){
+        imageViewer = new ImageViewer();
     }
 
     public JLabel getTitleLabel() {

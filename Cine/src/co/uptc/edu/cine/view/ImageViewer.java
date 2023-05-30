@@ -21,7 +21,7 @@ public class ImageViewer {
 
     private void initialize() {
         frame = new JFrame("CARTELERA");
-        frame.setBounds(80, 100, 500, 500);
+        frame.setBounds(80, 100, 800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         tabbedPane = new JTabbedPane(JTabbedPane.TOP);
