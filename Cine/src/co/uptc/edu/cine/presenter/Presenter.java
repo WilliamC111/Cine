@@ -5,6 +5,7 @@ import co.uptc.edu.cine.model.Customer;
 import co.uptc.edu.cine.model.Movie;
 import co.uptc.edu.cine.model.MovieFormat;
 import co.uptc.edu.cine.model.MovieGender;
+import co.uptc.edu.cine.view.ImageViewer;
 import co.uptc.edu.cine.view.View;
 
 public class Presenter {
@@ -25,7 +26,7 @@ public class Presenter {
 				createCustomer();
 				break;
 			case 2:
-				ShowBillboard();
+				;
 				break;
 			case 3:
                 ShowCustomers();
