@@ -16,7 +16,7 @@ import co.uptc.edu.cine.model.MovieGender;
 public class ImageViewer {
     private JFrame frame;
     private JTabbedPane tabbedPane;
-    private int imageWidth = 600;
+    private int imageWidth = 280;
     private int imageHeight = 400;
 
     public ImageViewer() {
@@ -55,11 +55,15 @@ public class ImageViewer {
         JPanel descriptionPanel1 = new JPanel();
         descriptionPanel1.setLayout(new GridLayout(3, 1));
         JLabel nameLabel1 = new JLabel(movie1.getNameMovies());
+        nameLabel1.setForeground(Color.white);
         JLabel timeLabel1 = new JLabel("Duración: " + movie1.getTimeMovie());
+        timeLabel1.setForeground(Color.white);
         JLabel formatLabel1 = new JLabel("Formato: " + movie1.getMovieFormat().toString());
+        formatLabel1.setForeground(Color.white);
         descriptionPanel1.add(nameLabel1);
         descriptionPanel1.add(timeLabel1);
         descriptionPanel1.add(formatLabel1);
+        descriptionPanel1.setBackground(new Color(0,0,128));
         panel1.add(descriptionPanel1);
 
         Movie movie2 = new Movie();
@@ -78,11 +82,15 @@ public class ImageViewer {
         JPanel descriptionPanel2 = new JPanel();
         descriptionPanel2.setLayout(new GridLayout(3, 1));
         JLabel nameLabel2 = new JLabel(movie2.getNameMovies());
+        nameLabel2.setForeground(Color.white);
         JLabel timeLabel2 = new JLabel("Duración: " + movie2.getTimeMovie());
+        timeLabel2.setForeground(Color.white);
         JLabel formatLabel2 = new JLabel("Formato: " + movie2.getMovieFormat().toString());
+        formatLabel2.setForeground(Color.white);
         descriptionPanel2.add(nameLabel2);
         descriptionPanel2.add(timeLabel2);
         descriptionPanel2.add(formatLabel2);
+        descriptionPanel2.setBackground(new Color(0,0,128));
         panel1.add(descriptionPanel2);
 
         Movie movie3 = new Movie();
@@ -101,15 +109,19 @@ public class ImageViewer {
         JPanel descriptionPanel3 = new JPanel();
         descriptionPanel3.setLayout(new GridLayout(3, 1));
         JLabel nameLabel3 = new JLabel(movie3.getNameMovies());
+        nameLabel3.setForeground(Color.white);
         JLabel timeLabel3 = new JLabel("Duración: " + movie3.getTimeMovie());
+        timeLabel3.setForeground(Color.white);
         JLabel formatLabel3 = new JLabel("Formato: " + movie3.getMovieFormat().toString());
+        formatLabel3.setForeground(Color.white);
         descriptionPanel3.add(nameLabel3);
         descriptionPanel3.add(timeLabel3);
+        descriptionPanel3.setBackground(new Color(0,0,128));
         descriptionPanel3.add(formatLabel3);
+        
         panel1.add(descriptionPanel3);
 
-        panel1.setBackground(new Color(42, 42, 42));
-
+        panel1.setBackground(new Color(0, 0, 128));
         tabbedPane.addTab("ACCIÓN", panel1);
 
         JPanel panel2 = new JPanel();
@@ -131,11 +143,15 @@ public class ImageViewer {
         JPanel descriptionPanel4= new JPanel();
         descriptionPanel4.setLayout(new GridLayout(3, 1));
         JLabel nameLabel4 = new JLabel(movie4.getNameMovies());
+        nameLabel4.setForeground(Color.white);
         JLabel timeLabel4 = new JLabel("Duración: " + movie4.getTimeMovie());
+        timeLabel4.setForeground(Color.white);
         JLabel formatLabel4 = new JLabel("Formato: " + movie4.getMovieFormat().toString());
+        formatLabel4.setForeground(Color.white);
         descriptionPanel4.add(nameLabel4);
         descriptionPanel4.add(timeLabel4);
         descriptionPanel4.add(formatLabel4);
+        descriptionPanel4.setBackground(new Color(0,0,128));
         panel2.add(descriptionPanel4);
 
         Movie movie5 = new Movie();
@@ -154,11 +170,15 @@ public class ImageViewer {
         JPanel descriptionPanel5 = new JPanel();
         descriptionPanel5.setLayout(new GridLayout(3, 1));
         JLabel nameLabel5 = new JLabel(movie5.getNameMovies());
+        nameLabel5.setForeground(Color.white);
         JLabel timeLabel5 = new JLabel("Duración: " + movie5.getTimeMovie());
+        timeLabel5.setForeground(Color.white);
         JLabel formatLabel5 = new JLabel("Formato: " + movie5.getMovieFormat().toString());
+        formatLabel5.setForeground(Color.white);
         descriptionPanel5.add(nameLabel5);
         descriptionPanel5.add(timeLabel5);
         descriptionPanel5.add(formatLabel5);
+        descriptionPanel5.setBackground(new Color(0,0,128));
         panel2.add(descriptionPanel5);
 
         Movie movie6 = new Movie();
@@ -177,14 +197,18 @@ public class ImageViewer {
         JPanel descriptionPanel6 = new JPanel();
         descriptionPanel6.setLayout(new GridLayout(3, 1));
         JLabel nameLabel6 = new JLabel(movie6.getNameMovies());
+        nameLabel6.setForeground(Color.white);
         JLabel timeLabel6 = new JLabel("Duración: " + movie6.getTimeMovie());
+        timeLabel6.setForeground(Color.white);
         JLabel formatLabel6 = new JLabel("Formato: " + movie6.getMovieFormat().toString());
+        formatLabel6.setForeground(Color.white);
         descriptionPanel6.add(nameLabel6);
         descriptionPanel6.add(timeLabel6);
         descriptionPanel6.add(formatLabel6);
+        descriptionPanel6.setBackground(new Color(0,0,128));
         panel2.add(descriptionPanel6);
 
-        panel2.setBackground(new Color(42, 42, 42));
+        panel2.setBackground(new Color(0, 0, 128));
         tabbedPane.addTab("ANIMACIÓN", panel2);
 
         JPanel panel3 = new JPanel();
@@ -206,11 +230,15 @@ public class ImageViewer {
         JPanel descriptionPanel7= new JPanel();
         descriptionPanel7.setLayout(new GridLayout(3, 1));
         JLabel nameLabel7 = new JLabel(movie7.getNameMovies());
+        nameLabel7.setForeground(Color.white);
         JLabel timeLabel7 = new JLabel("Duración: " + movie7.getTimeMovie());
+        timeLabel7.setForeground(Color.white);
         JLabel formatLabel7 = new JLabel("Formato: " + movie7.getMovieFormat().toString());
+        formatLabel7.setForeground(Color.white);
         descriptionPanel7.add(nameLabel7);
         descriptionPanel7.add(timeLabel7);
         descriptionPanel7.add(formatLabel7);
+        descriptionPanel7.setBackground(new Color(0,0,128));
         panel3.add(descriptionPanel7);
 
         Movie movie8 = new Movie();
@@ -229,11 +257,15 @@ public class ImageViewer {
         JPanel descriptionPanel8 = new JPanel();
         descriptionPanel8.setLayout(new GridLayout(3, 1));
         JLabel nameLabel8 = new JLabel(movie8.getNameMovies());
+        nameLabel8.setForeground(Color.white);
         JLabel timeLabel8 = new JLabel("Duración: " + movie8.getTimeMovie());
+        timeLabel8.setForeground(Color.white);
         JLabel formatLabel8 = new JLabel("Formato: " + movie8.getMovieFormat().toString());
+        formatLabel8.setForeground(Color.white);
         descriptionPanel8.add(nameLabel8);
         descriptionPanel8.add(timeLabel8);
         descriptionPanel8.add(formatLabel8);
+        descriptionPanel8.setBackground(new Color(0,0,128));
         panel3.add(descriptionPanel8);
 
         Movie movie9 = new Movie();
@@ -252,14 +284,18 @@ public class ImageViewer {
         JPanel descriptionPanel9 = new JPanel();
         descriptionPanel9.setLayout(new GridLayout(3, 1));
         JLabel nameLabel9 = new JLabel(movie9.getNameMovies());
+        nameLabel9.setForeground(Color.white);
         JLabel timeLabel9 = new JLabel("Duración: " + movie9.getTimeMovie());
+        timeLabel9.setForeground(Color.white);
         JLabel formatLabel9 = new JLabel("Formato: " + movie9.getMovieFormat().toString());
+        formatLabel9.setForeground(Color.white);
         descriptionPanel9.add(nameLabel9);
         descriptionPanel9.add(timeLabel9);
         descriptionPanel9.add(formatLabel9);
+        descriptionPanel9.setBackground(new Color(0,0,128));
         panel3.add(descriptionPanel9);
 
-        panel3.setBackground(new Color(42, 42, 42));
+        panel3.setBackground(new Color(0, 0, 128));
         tabbedPane.addTab("HORROR", panel3);
 
         JPanel panel4 = new JPanel();
@@ -281,11 +317,15 @@ public class ImageViewer {
         JPanel descriptionPanel10= new JPanel();
         descriptionPanel10.setLayout(new GridLayout(3, 1));
         JLabel nameLabel10= new JLabel(movie10.getNameMovies());
+        nameLabel10.setForeground(Color.white);
         JLabel timeLabel10 = new JLabel("Duración: " + movie10.getTimeMovie());
+        timeLabel10.setForeground(Color.white);
         JLabel formatLabel10 = new JLabel("Formato: " + movie10.getMovieFormat().toString());
+        formatLabel10.setForeground(Color.white);
         descriptionPanel10.add(nameLabel10);
         descriptionPanel10.add(timeLabel10);
         descriptionPanel10.add(formatLabel10);
+        descriptionPanel10.setBackground(new Color(0,0,128));
         panel4.add(descriptionPanel10);
 
         Movie movie11 = new Movie();
@@ -304,11 +344,15 @@ public class ImageViewer {
         JPanel descriptionPanel11 = new JPanel();
         descriptionPanel11.setLayout(new GridLayout(3, 1));
         JLabel nameLabel11 = new JLabel(movie11.getNameMovies());
+        nameLabel11.setForeground(Color.white);
         JLabel timeLabel11 = new JLabel("Duración: " + movie11.getTimeMovie());
+        timeLabel11.setForeground(Color.white);
         JLabel formatLabel11 = new JLabel("Formato: " + movie11.getMovieFormat().toString());
+        formatLabel11.setForeground(Color.white);
         descriptionPanel11.add(nameLabel11);
         descriptionPanel11.add(timeLabel11);
         descriptionPanel11.add(formatLabel11);
+        descriptionPanel11.setBackground(new Color(0,0,128));
         panel4.add(descriptionPanel11);
 
         Movie movie12 = new Movie();
@@ -327,14 +371,18 @@ public class ImageViewer {
         JPanel descriptionPanel12 = new JPanel();
         descriptionPanel12.setLayout(new GridLayout(3, 1));
         JLabel nameLabel12= new JLabel(movie12.getNameMovies());
+        nameLabel12.setForeground(Color.white);
         JLabel timeLabel12 = new JLabel("Duración: " + movie9.getTimeMovie());
+        timeLabel12.setForeground(Color.white);
         JLabel formatLabel12 = new JLabel("Formato: " + movie9.getMovieFormat().toString());
+        formatLabel12.setForeground(Color.white);
         descriptionPanel12.add(nameLabel12);
         descriptionPanel12.add(timeLabel12);
         descriptionPanel12.add(formatLabel12);
+        descriptionPanel12.setBackground(new Color(0,0,128));
         panel4.add(descriptionPanel12);
 
-        panel4.setBackground(new Color(42, 42, 42));
+        panel4.setBackground(new Color(0, 0, 128));
         tabbedPane.addTab("CIENCIA FICCIÓN", panel4);
     }
 
