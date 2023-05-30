@@ -13,10 +13,27 @@ public class Cinema {
 	private final int FOURK_PRICE = 15000;
 	private final int ULTRATWOD_PRICE = 12000;
 
+	private Movie movie1 = new Movie();
+
 	public Cinema() {
 		rooms = new ArrayList<Room>();
 		movies = new ArrayList<Movie>();
 		customers = new ArrayList<Customer>();
+
+		movie1.setNameMovies("El gato con botas");
+		movie1.setDescription(
+				"""
+						El Gato con Botas descubre que su pasión por la aventura le ha pasado factura: Ha agotado ocho de sus nueve vidas.
+						El Gato con Botas se embarca en un viaje épico para encontrar al mítico Último Deseo y recuperar sus nueve vidas.
+						""");
+		movie1.setTimeMovie("1h 42min");
+		movie1.setMovieGenders(MovieGender.ADVENTURE);
+		movie1.setMovieGenders(MovieGender.ANIMATION);
+		movie1.setMovieGenders(MovieGender.COMEDY);
+		movie1.setMovieFormat(MovieFormat.TWO_D);
+		movie1.setMovieFormat(MovieFormat.THREE_D);
+		movie1.setIcon("Cine/Cine/src/resources/Movies/El_Gato_Con_Botas.jpg");
+		movies.add(movie1);
 	}
 
 	public void addRoom(Room room) {

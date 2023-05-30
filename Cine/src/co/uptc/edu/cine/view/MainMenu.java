@@ -24,7 +24,7 @@ public class MainMenu {
 
     public MainMenu() {
         mainFont = new Font("Arial", Font.BOLD, 50);
-        mainColor = new Color(42, 42, 42);
+        mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
 
         mainFrame = new JFrame();
