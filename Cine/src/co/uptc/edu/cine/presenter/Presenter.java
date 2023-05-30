@@ -53,7 +53,7 @@ public class Presenter {
 
 		view.showGraphicMessage(menu1);
 		Customer customer = new Customer();
-		customer.setName(view.readGraphicString("Ingrese nombre del paciente:"));
+		customer.setName(view.readGraphicString("Ingrese nombre del cliente:"));
 		customer.setID(view.readGraphicInt("Ingrese identificacion del cliente:"));
 		view.showGraphicMessage("CLIENTE CREADO");
 		init();

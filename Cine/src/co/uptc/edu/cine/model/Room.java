@@ -1,5 +1,4 @@
 package co.uptc.edu.cine.model;
-
 import java.util.ArrayList;
 
 public class Room {

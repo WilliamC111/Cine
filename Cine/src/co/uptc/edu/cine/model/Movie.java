@@ -84,7 +84,6 @@ public class Movie {
 		movie.setMovieGenders(MovieGender.ANIMATION);
 		movie.setMovieGenders(MovieGender.COMEDY);
 		movie.setMovieFormat(MovieFormat.TWO_D);
-
 		movie.setIcon("Cine/src/resources/El_Gato_Con_Botas.jpg");
 
 		System.out.println(movie);
