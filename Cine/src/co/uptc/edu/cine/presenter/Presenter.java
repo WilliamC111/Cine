@@ -1,19 +1,23 @@
 package co.uptc.edu.cine.presenter;
 
-import co.uptc.edu.cine.model.Cinema;
-import co.uptc.edu.cine.model.Customer;
-import co.uptc.edu.cine.model.Movie;
-import co.uptc.edu.cine.model.MovieFormat;
-import co.uptc.edu.cine.model.MovieGender;
-import co.uptc.edu.cine.view.ImageViewer;
-import co.uptc.edu.cine.view.View;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Presenter {
+import javax.swing.JOptionPane;
+
+import co.uptc.edu.cine.model.*;
+import co.uptc.edu.cine.view.*;
+
+public class Presenter implements ActionListener{
 	Cinema cinema = new Cinema();
+	Customer customer = new Customer();
 	View view = new View();
+	private MainMenu menu;
+
 
 	public Presenter() {
-		init();
+		menu = new MainMenu(this);
+		//init();
 	}
 
 	public void init() {
@@ -46,6 +50,14 @@ public class Presenter {
 			init();
 		}
 
+	}
+
+	public void initMenu(){
+		menu.mainMenu();
+	}
+
+	public void addMenu(){
+		menu.addMovieMenu();
 	}
 
 	public void createCustomer() {
@@ -91,6 +103,34 @@ public class Presenter {
 
 	public static void main(String[] args) {
 		new Presenter();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String command = e.getActionCommand();
+		if(command.equals(menu.getLoginButton().getText())){
+			if(customer.isAdmin(menu.getUserText().getText(), menu.getPasswordText().getName())){
+				menu.getMainFrame().dispose();
+				initMenu();
+			}else{
+				JOptionPane.showMessageDialog(menu.getMainFrame(), "Error, acceso no valido", "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		if(command.equals(menu.getAddButton().getText())){
+			menu.getMainFrame().dispose();
+			addMenu();
+		}
+		if(command.equals(menu.getAddMovieMenu().getAddMovieButton().getText())){
+			Movie movie = new Movie();
+			menu.getAddMovieMenu().addMovieOption();
+			movie.setNameMovies(menu.getAddMovieMenu().getNameMovie().getText());
+			movie.setDescription(menu.getAddMovieMenu().getDescriptionMovie().getText());
+			movie.setTimeMovie(menu.getAddMovieMenu().getFormattedTextField().getText());
+			cinema.setMovies(movie);
+			
+			
+		}
 	}
 }
 

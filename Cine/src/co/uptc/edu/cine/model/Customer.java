@@ -4,7 +4,7 @@ public class Customer {
 	private String name;
 	private int ID;
 	private String admin = "ADMIN";
-	private String adminPassword = "cinema123";
+	private String adminPassword = "admin123";
 
 	public String getName() {
 		return name;

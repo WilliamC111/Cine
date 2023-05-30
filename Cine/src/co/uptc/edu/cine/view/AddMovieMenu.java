@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 import javax.swing.*;
@@ -13,6 +14,8 @@ import javax.swing.text.MaskFormatter;
 import co.uptc.edu.cine.model.*;
 
 public class AddMovieMenu {
+    private ActionListener actionListener;
+
     private Color mainColor;
     private ImageIcon mainIcon;
 
@@ -30,7 +33,8 @@ public class AddMovieMenu {
     private JFormattedTextField formattedTextField;
     private Cinema cinema;
 
-    public AddMovieMenu() {
+    public AddMovieMenu(ActionListener actionListener) {
+        this.actionListener = actionListener;
         cinema = new Cinema();
 
         mainColor = new Color(0, 0, 128);
@@ -44,24 +48,23 @@ public class AddMovieMenu {
         addMovieFrame.setResizable(false);
         addMovieFrame.setIconImage(mainIcon.getImage());
 
-        // createMovie();
-        addMovieOption();
+        createMovie();
 
         addMovieFrame.setVisible(true);
-
-        // deleteMovieOption();
     }
 
     public void createMovie() {
+        
         addMoviePanel = new JPanel(null);
         addMoviePanel.setBackground(mainColor);
 
-        addMovieButton = new JButton("Agregar Película");
+        addMovieButton = new JButton("Crear Película");
         addMovieButton.setFont(new Font("Arial", Font.BOLD, 30));
         addMovieButton.setForeground(Color.WHITE);
         addMovieButton.setBackground(mainColor);
         addMovieButton.setFocusPainted(false);
         addMovieButton.setBounds(100, 100, 280, 40);
+        addMovieButton.addActionListener(actionListener);
         addMoviePanel.add(addMovieButton);
 
         backButton = new JButton("Volver");
@@ -615,7 +618,7 @@ public class AddMovieMenu {
         return UltraTwoDOption;
     }
 
-    public static void main(String[] args) {
-        new AddMovieMenu();
+    public JFormattedTextField getFormattedTextField() {
+        return formattedTextField;
     }
 }

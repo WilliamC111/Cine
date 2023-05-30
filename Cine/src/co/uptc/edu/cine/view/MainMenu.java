@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class MainMenu {
+    ActionListener actionListener;
+
     private Font mainFont;
     private Color mainColor;
     private ImageIcon mainIcon;
@@ -22,7 +25,9 @@ public class MainMenu {
     private ImageViewer imageViewer;
     private AddMovieMenu addMovieMenu;
 
-    public MainMenu() {
+    public MainMenu(ActionListener actionListener) {
+        this.actionListener = actionListener;
+
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -38,8 +43,6 @@ public class MainMenu {
         InitialMenu();
 
         mainFrame.setVisible(true);
-
-        viewMovieLists();
     }
 
     public void InitialMenu() {
@@ -113,12 +116,21 @@ public class MainMenu {
         loginButtonConstraints.gridwidth = 2;
         loginButtonConstraints.anchor = GridBagConstraints.CENTER;
         loginButtonConstraints.insets.top = 20;
+        loginButton.addActionListener(actionListener);
         mainPanel.add(loginButton, loginButtonConstraints);
 
         mainFrame.setContentPane(mainPanel);
     }
 
     public void mainMenu() {
+        mainFrame = new JFrame();
+        mainFrame.setTitle("Menu principal");
+        mainFrame.setSize(800, 600);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setResizable(false);
+        mainFrame.setIconImage(mainIcon.getImage());
+
         mainPanel = new JPanel();
         mainPanel.setBackground(mainColor);
         mainPanel.setLayout(new GridBagLayout());
@@ -145,6 +157,7 @@ public class MainMenu {
         addButtonConstraints.gridwidth = 0;
         addButtonConstraints.anchor = GridBagConstraints.CENTER;
         addButtonConstraints.insets.bottom = 20;
+        addButton.addActionListener(actionListener);
         mainPanel.add(addButton, addButtonConstraints);
 
         saleButton = new JButton("Venta de Boletas");
@@ -174,14 +187,27 @@ public class MainMenu {
         mainPanel.add(historyButton, historyButtonConstraints);
 
         mainFrame.setContentPane(mainPanel);
+        mainFrame.setVisible(true);
     }
 
     public void addMovieMenu() {
-        addMovieMenu = new AddMovieMenu();
+        addMovieMenu = new AddMovieMenu(actionListener);
     }
 
     public void viewMovieLists(){
         imageViewer = new ImageViewer();
+    }
+
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public AddMovieMenu getAddMovieMenu() {
+        return  this.addMovieMenu;
     }
 
     public JLabel getTitleLabel() {
@@ -223,9 +249,4 @@ public class MainMenu {
     public JButton getHistoryButton() {
         return historyButton;
     }
-
-    public static void main(String[] args) {
-        new MainMenu();
-    }
-
 }
