@@ -93,7 +93,6 @@ public class Room {
 		movie2.setMovieFormat(MovieFormat.TWO_D);
 		movie2.setMovieFormat(MovieFormat.THREE_D);
 		movie2.setMovieFormat(MovieFormat.IMAX);
-
 		room.addMovie(movie1);
 		room.addMovie(movie2);
 
