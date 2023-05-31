@@ -4,11 +4,18 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.File;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.jar.Manifest;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.MaskFormatter;
 
 import co.uptc.edu.cine.model.*;
@@ -31,7 +38,11 @@ public class AddMovieMenu {
             shortFilmOption, sportOption, superheroOption, thrillerOption, warOption, westernOption, TwoDOption,
             ThreeDOption, FourKOption, ImaxOption, UltraTwoDOption;
     private JFormattedTextField formattedTextField;
+
     private Cinema cinema;
+
+    private ArrayList<String> movieFormats = new ArrayList<String>();
+    private ArrayList<String> movieGenders = new ArrayList<String>();
 
     public AddMovieMenu(ActionListener actionListener) {
         this.actionListener = actionListener;
@@ -54,7 +65,7 @@ public class AddMovieMenu {
     }
 
     public void createMovie() {
-        
+
         addMoviePanel = new JPanel(null);
         addMoviePanel.setBackground(mainColor);
 
@@ -150,6 +161,17 @@ public class AddMovieMenu {
         TwoDOption.setBounds(160, 240, 60, 40);
         addMoviePanel.add(TwoDOption);
 
+        TwoDOption.addItemListener(new ItemListener() {
+            MovieFormat movieFormat;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (TwoDOption.isSelected()) {
+                    movieFormat = movieFormat.TWO_D;
+                    movieFormats.add(movieFormat.getName());
+                }
+            }
+        });
+
         ThreeDOption = new JCheckBox("3D");
         ThreeDOption.setFont(new Font("Arial", Font.BOLD, 20));
         ThreeDOption.setForeground(Color.WHITE);
@@ -157,12 +179,33 @@ public class AddMovieMenu {
         ThreeDOption.setBounds(220, 240, 60, 40);
         addMoviePanel.add(ThreeDOption);
 
+        ThreeDOption.addItemListener(new ItemListener() {
+            MovieFormat movieFormat;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (ThreeDOption.isSelected()) {
+                    movieFormat = movieFormat.THREE_D;
+                    movieFormats.add(movieFormat.getName());
+                }
+            }
+        });
+
         FourKOption = new JCheckBox("4K");
         FourKOption.setFont(new Font("Arial", Font.BOLD, 20));
         FourKOption.setForeground(Color.WHITE);
         FourKOption.setBackground(mainColor);
         FourKOption.setBounds(280, 240, 60, 40);
         addMoviePanel.add(FourKOption);
+        FourKOption.addItemListener(new ItemListener() {
+            MovieFormat movieFormat;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (FourKOption.isSelected()) {
+                    movieFormat = movieFormat.FOUR_K;
+                    movieFormats.add(movieFormat.getName());
+                }
+            }
+        });
 
         ImaxOption = new JCheckBox("IMAX");
         ImaxOption.setFont(new Font("Arial", Font.BOLD, 20));
@@ -171,12 +214,34 @@ public class AddMovieMenu {
         ImaxOption.setBounds(340, 240, 80, 40);
         addMoviePanel.add(ImaxOption);
 
+        ImaxOption.addItemListener(new ItemListener() {
+            MovieFormat movieFormat;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (ImaxOption.isSelected()) {
+                    movieFormat = movieFormat.IMAX;
+                    movieFormats.add(movieFormat.getName());
+                }
+            }
+        });
+
         UltraTwoDOption = new JCheckBox("Ultra 2D");
         UltraTwoDOption.setFont(new Font("Arial", Font.BOLD, 20));
         UltraTwoDOption.setForeground(Color.WHITE);
         UltraTwoDOption.setBackground(mainColor);
         UltraTwoDOption.setBounds(420, 240, 120, 40);
         addMoviePanel.add(UltraTwoDOption);
+
+        UltraTwoDOption.addItemListener(new ItemListener() {
+            MovieFormat movieFormat;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (UltraTwoDOption.isSelected()) {
+                    movieFormat = movieFormat.ULTRA_TWO_D;
+                    movieFormats.add(movieFormat.getName());
+                }
+            }
+        });
 
         timeLabel = new JLabel("Duración (h:mm):");
         timeLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -185,9 +250,10 @@ public class AddMovieMenu {
         addMoviePanel.add(timeLabel);
 
         try {
-            MaskFormatter formatter = new MaskFormatter("#:##");
+            MaskFormatter formatter = new MaskFormatter("#h:##min");
             formattedTextField = new JFormattedTextField(formatter);
-            formattedTextField.setBounds(250, 300, 50, 40);
+            formattedTextField.setColumns(5);
+            formattedTextField.setBounds(250, 300, 100, 40);
             formattedTextField.setFont(new Font("Arial", Font.BOLD, 20));
             formattedTextField.setForeground(Color.WHITE);
             formattedTextField.setBackground(mainColor);
@@ -208,6 +274,21 @@ public class AddMovieMenu {
         addImageButton.setFocusPainted(false);
         addImageButton.setBounds(50, 450, 190, 40);
         addMoviePanel.add(addImageButton);
+        addImageButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setFileFilter(new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif"));
+                int result = fileChooser.showOpenDialog(addMovieFrame);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    ImageIcon imageIcon = new ImageIcon(selectedFile.getAbsolutePath());
+                    Image scaled = imageIcon.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);  
+                    ImageIcon scaledImage = new ImageIcon(scaled);                  
+                    mainIconLabel.setIcon(scaledImage);
+                    
+                }
+            }
+        });
 
         genderLabel = new JLabel("Generos:");
         genderLabel.setFont(new Font("Arial", Font.BOLD, 20));
@@ -223,6 +304,17 @@ public class AddMovieMenu {
         actionOption.setBounds(750, 100, 80, 40);
         addMoviePanel.add(actionOption);
 
+        actionOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (actionOption.isSelected()) {
+                    movieGender = movieGender.ACTION;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         adventureOption = new JCheckBox("Aventura");
         adventureOption.setFont(new Font("Arial", Font.BOLD, 10));
         adventureOption.setForeground(Color.WHITE);
@@ -230,6 +322,17 @@ public class AddMovieMenu {
         adventureOption.setFocusPainted(false);
         adventureOption.setBounds(750, 130, 80, 40);
         addMoviePanel.add(adventureOption);
+
+        adventureOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (adventureOption.isSelected()) {
+                    movieGender = movieGender.ADVENTURE;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         animationOption = new JCheckBox("Animación");
         animationOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -239,6 +342,17 @@ public class AddMovieMenu {
         animationOption.setBounds(750, 160, 80, 40);
         addMoviePanel.add(animationOption);
 
+        animationOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (animationOption.isSelected()) {
+                    movieGender = movieGender.ANIMATION;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         biographyOption = new JCheckBox("Biografía");
         biographyOption.setFont(new Font("Arial", Font.BOLD, 10));
         biographyOption.setForeground(Color.WHITE);
@@ -246,6 +360,17 @@ public class AddMovieMenu {
         biographyOption.setFocusPainted(false);
         biographyOption.setBounds(750, 190, 80, 40);
         addMoviePanel.add(biographyOption);
+
+        biographyOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (biographyOption.isSelected()) {
+                    movieGender = movieGender.BIOGRAPHY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         catastropheOption = new JCheckBox("Catastrofe");
         catastropheOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -255,6 +380,17 @@ public class AddMovieMenu {
         catastropheOption.setBounds(750, 220, 80, 40);
         addMoviePanel.add(catastropheOption);
 
+        catastropheOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (catastropheOption.isSelected()) {
+                    movieGender = movieGender.CATASTROPHE;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         comedyOption = new JCheckBox("Comedia");
         comedyOption.setFont(new Font("Arial", Font.BOLD, 10));
         comedyOption.setForeground(Color.WHITE);
@@ -262,6 +398,17 @@ public class AddMovieMenu {
         comedyOption.setFocusPainted(false);
         comedyOption.setBounds(750, 250, 80, 40);
         addMoviePanel.add(comedyOption);
+
+        comedyOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (comedyOption.isSelected()) {
+                    movieGender = movieGender.COMEDY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         crimeOption = new JCheckBox("Crimen");
         crimeOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -271,6 +418,17 @@ public class AddMovieMenu {
         crimeOption.setBounds(750, 280, 80, 40);
         addMoviePanel.add(crimeOption);
 
+        crimeOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (crimeOption.isSelected()) {
+                    movieGender = movieGender.CRIME;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         documentaryOption = new JCheckBox("Documental");
         documentaryOption.setFont(new Font("Arial", Font.BOLD, 10));
         documentaryOption.setForeground(Color.WHITE);
@@ -278,6 +436,17 @@ public class AddMovieMenu {
         documentaryOption.setFocusPainted(false);
         documentaryOption.setBounds(750, 310, 80, 40);
         addMoviePanel.add(documentaryOption);
+
+        documentaryOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (documentaryOption.isSelected()) {
+                    movieGender = movieGender.DOCUMENTARY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         dramaOption = new JCheckBox("Drama");
         dramaOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -287,6 +456,17 @@ public class AddMovieMenu {
         dramaOption.setBounds(750, 340, 80, 40);
         addMoviePanel.add(dramaOption);
 
+        dramaOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (dramaOption.isSelected()) {
+                    movieGender = movieGender.DRAMA;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         familyOption = new JCheckBox("Familiar");
         familyOption.setFont(new Font("Arial", Font.BOLD, 10));
         familyOption.setForeground(Color.WHITE);
@@ -294,6 +474,17 @@ public class AddMovieMenu {
         familyOption.setFocusPainted(false);
         familyOption.setBounds(750, 370, 80, 40);
         addMoviePanel.add(familyOption);
+
+        familyOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (familyOption.isSelected()) {
+                    movieGender = movieGender.FAMILY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         fantasyOption = new JCheckBox("Fantasía");
         fantasyOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -303,6 +494,17 @@ public class AddMovieMenu {
         fantasyOption.setBounds(750, 400, 80, 40);
         addMoviePanel.add(fantasyOption);
 
+        fantasyOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (fantasyOption.isSelected()) {
+                    movieGender = movieGender.FANTASY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         filmNoirOption = new JCheckBox("Fantasía");
         filmNoirOption.setFont(new Font("Arial", Font.BOLD, 10));
         filmNoirOption.setForeground(Color.WHITE);
@@ -310,6 +512,17 @@ public class AddMovieMenu {
         filmNoirOption.setFocusPainted(false);
         filmNoirOption.setBounds(750, 430, 80, 40);
         addMoviePanel.add(filmNoirOption);
+
+        filmNoirOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+
+            public void itemStateChanged(ItemEvent e) {
+                if (filmNoirOption.isSelected()) {
+                    movieGender = movieGender.FILM_NOIR;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         historyOption = new JCheckBox("Historia");
         historyOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -319,6 +532,16 @@ public class AddMovieMenu {
         historyOption.setBounds(750, 460, 80, 40);
         addMoviePanel.add(historyOption);
 
+        historyOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (historyOption.isSelected()) {
+                    movieGender = movieGender.HISTORY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         horrorOption = new JCheckBox("Horror");
         horrorOption.setFont(new Font("Arial", Font.BOLD, 10));
         horrorOption.setForeground(Color.WHITE);
@@ -326,6 +549,16 @@ public class AddMovieMenu {
         horrorOption.setFocusPainted(false);
         horrorOption.setBounds(850, 100, 80, 40);
         addMoviePanel.add(horrorOption);
+
+        horrorOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (horrorOption.isSelected()) {
+                    movieGender = movieGender.HORROR;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         musicOption = new JCheckBox("Musica");
         musicOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -335,6 +568,16 @@ public class AddMovieMenu {
         musicOption.setBounds(850, 130, 80, 40);
         addMoviePanel.add(musicOption);
 
+        musicOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (musicOption.isSelected()) {
+                    movieGender = movieGender.MUSIC;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         musicalOption = new JCheckBox("Musical");
         musicalOption.setFont(new Font("Arial", Font.BOLD, 10));
         musicalOption.setForeground(Color.WHITE);
@@ -342,6 +585,16 @@ public class AddMovieMenu {
         musicalOption.setFocusPainted(false);
         musicalOption.setBounds(850, 160, 80, 40);
         addMoviePanel.add(musicalOption);
+
+        musicalOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (musicalOption.isSelected()) {
+                    movieGender = movieGender.MUSICAL;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         misteryOption = new JCheckBox("Misterio");
         misteryOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -351,6 +604,16 @@ public class AddMovieMenu {
         misteryOption.setBounds(850, 190, 80, 40);
         addMoviePanel.add(misteryOption);
 
+        misteryOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (misteryOption.isSelected()) {
+                    movieGender = movieGender.MISTERY;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         romanceOption = new JCheckBox("Romance");
         romanceOption.setFont(new Font("Arial", Font.BOLD, 10));
         romanceOption.setForeground(Color.WHITE);
@@ -358,6 +621,16 @@ public class AddMovieMenu {
         romanceOption.setFocusPainted(false);
         romanceOption.setBounds(850, 220, 80, 40);
         addMoviePanel.add(romanceOption);
+
+        romanceOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (romanceOption.isSelected()) {
+                    movieGender = movieGender.ROMANCE;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         scifiOption = new JCheckBox("Ciencia Ficción");
         scifiOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -367,6 +640,16 @@ public class AddMovieMenu {
         scifiOption.setBounds(850, 250, 120, 40);
         addMoviePanel.add(scifiOption);
 
+        scifiOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (scifiOption.isSelected()) {
+                    movieGender = movieGender.SCIFI;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         shortFilmOption = new JCheckBox("Cortos");
         shortFilmOption.setFont(new Font("Arial", Font.BOLD, 10));
         shortFilmOption.setForeground(Color.WHITE);
@@ -374,6 +657,16 @@ public class AddMovieMenu {
         shortFilmOption.setFocusPainted(false);
         shortFilmOption.setBounds(850, 280, 80, 40);
         addMoviePanel.add(shortFilmOption);
+
+        shortFilmOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (shortFilmOption.isSelected()) {
+                    movieGender = movieGender.SHORT_FILM;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         sportOption = new JCheckBox("Deportes");
         sportOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -383,6 +676,16 @@ public class AddMovieMenu {
         sportOption.setBounds(850, 310, 80, 40);
         addMoviePanel.add(sportOption);
 
+        sportOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (sportOption.isSelected()) {
+                    movieGender = movieGender.SPORT;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         superheroOption = new JCheckBox("Superheroes");
         superheroOption.setFont(new Font("Arial", Font.BOLD, 10));
         superheroOption.setForeground(Color.WHITE);
@@ -390,6 +693,16 @@ public class AddMovieMenu {
         superheroOption.setFocusPainted(false);
         superheroOption.setBounds(850, 340, 100, 40);
         addMoviePanel.add(superheroOption);
+
+        superheroOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (superheroOption.isSelected()) {
+                    movieGender = movieGender.SUPERHERO;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         thrillerOption = new JCheckBox("Suspenso");
         thrillerOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -399,6 +712,16 @@ public class AddMovieMenu {
         thrillerOption.setBounds(850, 370, 80, 40);
         addMoviePanel.add(thrillerOption);
 
+        thrillerOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (thrillerOption.isSelected()) {
+                    movieGender = movieGender.THRILLER;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         warOption = new JCheckBox("Guerra");
         warOption.setFont(new Font("Arial", Font.BOLD, 10));
         warOption.setForeground(Color.WHITE);
@@ -406,6 +729,16 @@ public class AddMovieMenu {
         warOption.setFocusPainted(false);
         warOption.setBounds(850, 400, 80, 40);
         addMoviePanel.add(warOption);
+
+        warOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (warOption.isSelected()) {
+                    movieGender = movieGender.WAR;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
 
         westernOption = new JCheckBox("Oeste");
         westernOption.setFont(new Font("Arial", Font.BOLD, 10));
@@ -415,15 +748,47 @@ public class AddMovieMenu {
         westernOption.setBounds(850, 430, 80, 40);
         addMoviePanel.add(westernOption);
 
+        westernOption.addItemListener(new ItemListener() {
+            MovieGender movieGender;
+            public void itemStateChanged(ItemEvent e) {
+                if (westernOption.isSelected()) {
+                    movieGender = movieGender.WESTERN;
+                    movieGenders.add(movieGender.getName());
+                }
+            }
+        });
+
         createButton = new JButton("Crear");
         createButton.setFont(new Font("Arial", Font.BOLD, 30));
         createButton.setForeground(Color.WHITE);
         createButton.setBackground(mainColor);
         createButton.setFocusPainted(false);
         createButton.setBounds(800, 780, 120, 40);
+        createButton.addActionListener(actionListener);
         addMoviePanel.add(createButton);
 
         addMovieFrame.setContentPane(addMoviePanel);
+    }
+
+    public ArrayList<String> getMovieFormats() {
+        return movieFormats;
+    }
+
+    public ArrayList<String> getMovieGenders(){
+        return movieGenders;
+    }
+
+    public String getTime(String time) {
+        String timeAux = "";
+        try {
+            String hh = time.substring(0, 2);
+            String mm = time.substring(3, 5);
+            timeAux = hh + "h " + mm + "min";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(timeAux);
+        return timeAux;
     }
 
     public void deleteMovieOption() {
@@ -463,7 +828,7 @@ public class AddMovieMenu {
         });
         JOptionPane.showMessageDialog(null, movieList, "Seleccione la película a editar",
                 JOptionPane.QUESTION_MESSAGE);
-        
+
     }
 
     public JButton getAddMovieButton() {
@@ -484,6 +849,10 @@ public class AddMovieMenu {
 
     public JButton getAddImageButton() {
         return addImageButton;
+    }
+
+    public JButton getCreateButton(){
+        return createButton;
     }
 
     public JLabel getMainIconLabel() {

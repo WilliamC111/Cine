@@ -75,10 +75,10 @@ public class Room {
 				desafortunado R.M.S. Titanic.
 				""");
 		movie1.setTimeMovie("3h 14min");
-		movie1.setMovieGenders(MovieGender.DRAMA);
-		movie1.setMovieGenders(MovieGender.ROMANCE);
-		movie1.setMovieFormat(MovieFormat.THREE_D);
-		movie1.setMovieFormat(MovieFormat.TWO_D);
+		movie1.addMovieGenders(MovieGender.DRAMA);
+		movie1.addMovieGenders(MovieGender.ROMANCE);
+		movie1.addMovieFormat(MovieFormat.THREE_D);
+		movie1.addMovieFormat(MovieFormat.TWO_D);
 
 		Movie movie2 = new Movie();
 		movie2.setNameMovies("Todo en todas partes al mismo tiempo");
@@ -87,12 +87,12 @@ public class Room {
 				salvar el mundo explorando otros universos que se conectan con sus vidas pasadas.
 				""");
 		movie2.setTimeMovie("2h 19min");
-		movie2.setMovieGenders(MovieGender.COMEDY);
-		movie2.setMovieGenders(MovieGender.ACTION);
-		movie2.setMovieGenders(MovieGender.ADVENTURE);
-		movie2.setMovieFormat(MovieFormat.TWO_D);
-		movie2.setMovieFormat(MovieFormat.THREE_D);
-		movie2.setMovieFormat(MovieFormat.IMAX);
+		movie2.addMovieGenders(MovieGender.COMEDY);
+		movie2.addMovieGenders(MovieGender.ACTION);
+		movie2.addMovieGenders(MovieGender.ADVENTURE);
+		movie2.addMovieFormat(MovieFormat.TWO_D);
+		movie2.addMovieFormat(MovieFormat.THREE_D);
+		movie2.addMovieFormat(MovieFormat.IMAX);
 		room.addMovie(movie1);
 		room.addMovie(movie2);
 
@@ -108,12 +108,12 @@ public class Room {
 				y simpático grupo de animales que le enseñarán a vivir la vida.
 				""");
 		movie3.setTimeMovie("1h 58min");
-		movie3.setMovieGenders(MovieGender.ANIMATION);
-		movie3.setMovieGenders(MovieGender.ADVENTURE);
-		movie3.setMovieGenders(MovieGender.DRAMA);
-		movie3.setMovieFormat(MovieFormat.TWO_D);
-		movie3.setMovieFormat(MovieFormat.THREE_D);
-		movie3.setMovieFormat(MovieFormat.IMAX);
+		movie3.addMovieGenders(MovieGender.ANIMATION);
+		movie3.addMovieGenders(MovieGender.ADVENTURE);
+		movie3.addMovieGenders(MovieGender.DRAMA);
+		movie3.addMovieFormat(MovieFormat.TWO_D);
+		movie3.addMovieFormat(MovieFormat.THREE_D);
+		movie3.addMovieFormat(MovieFormat.IMAX);
 
 		room2.addMovie(movie3);
 		System.out.println(room2);

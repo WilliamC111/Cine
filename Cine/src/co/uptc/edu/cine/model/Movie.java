@@ -53,7 +53,11 @@ public class Movie {
 		return movieGenders;
 	}
 
-	public void setMovieGenders(MovieGender movieGender) {
+	public void setMovieGenders(ArrayList<String> movieGenders){
+		this.movieGenders = movieGenders;
+	}
+
+	public void addMovieGenders(MovieGender movieGender) {
 		this.movieGenders.add(movieGender.getName());
 	}
 
@@ -61,15 +65,19 @@ public class Movie {
 		return movieFormat;
 	}
 
-	public void setMovieFormat(MovieFormat movieFormat) {
-		this.movieFormat.add(movieFormat.getName());
+	public void setMovieFormat(ArrayList<String> movieFormat) {
+		this.movieFormat = movieFormat;
+	}
+
+	public void addMovieFormat(MovieFormat movie){
+		this.movieFormat.add(movie.getName());
+
 	}
 
 	@Override
 	public String toString() {
 		return "Pelicula: " + getNameMovies() + "\ndescripcion:\n" + getDescription() + "\nDuracion: " + getTimeMovie()
-				+ "\nGeneros: "
-				+ getMovieGenders() + "\nFormatos: " + getMovieFormat() + "\n" + getIcon() + "\n";
+				+ "\nGeneros: " + getMovieGenders() + "\nFormatos: " + getMovieFormat() + "\n" + getIcon() + "\n";
 	}
 
 	public static void main(String[] args) {
@@ -80,9 +88,9 @@ public class Movie {
 					John ha encontrado el modo de derrotar a la Mesa Alta (consejo de criminales), pero antes de que pueda enfrentarlos
 					 debe combatir a un enemigo que ha logrado que viejos amigos también se conviertan en enemigos""");
 		movie.setTimeMovie("1h 42min");
-		movie.setMovieGenders(MovieGender.ACTION);
+		movie.addMovieGenders(MovieGender.ACTION);
 		
-		movie.setMovieFormat(MovieFormat.TWO_D);
+		movie.addMovieFormat(MovieFormat.TWO_D);
 		movie.setIcon("/resources/action/image1.jpg");
 
 		System.out.println(movie);

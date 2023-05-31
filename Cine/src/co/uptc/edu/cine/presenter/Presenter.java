@@ -8,16 +8,15 @@ import javax.swing.JOptionPane;
 import co.uptc.edu.cine.model.*;
 import co.uptc.edu.cine.view.*;
 
-public class Presenter implements ActionListener{
+public class Presenter implements ActionListener {
 	Cinema cinema = new Cinema();
 	Customer customer = new Customer();
 	View view = new View();
 	private MainMenu menu;
 
-
 	public Presenter() {
 		menu = new MainMenu(this);
-		//init();
+		// init();
 	}
 
 	public void init() {
@@ -26,24 +25,24 @@ public class Presenter implements ActionListener{
 		try {
 			int option = view.readGraphicInt(menu + "\nSeleccione una opción:");
 			switch (option) {
-			case 1:
-				createCustomer();
-				break;
-			case 2:
-				;
-				break;
-			case 3:
-                ShowCustomers();
-				break;
-			
-			case 4:
-				view.showGraphicMessage("----Adios----");
-				System.exit(0);
-				break;
-			default:
-				view.showErrorMessage("OPCION NO VALIDA");
-				init();
-				break;
+				case 1:
+					createCustomer();
+					break;
+				case 2:
+					;
+					break;
+				case 3:
+					ShowCustomers();
+					break;
+
+				case 4:
+					view.showGraphicMessage("----Adios----");
+					System.exit(0);
+					break;
+				default:
+					view.showErrorMessage("OPCION NO VALIDA");
+					init();
+					break;
 			}
 		} catch (Exception e) {
 			view.showErrorMessage("OPCION NO VALIDA");
@@ -52,11 +51,11 @@ public class Presenter implements ActionListener{
 
 	}
 
-	public void initMenu(){
+	public void initMenu() {
 		menu.mainMenu();
 	}
 
-	public void addMenu(){
+	public void addMenu() {
 		menu.addMovieMenu();
 	}
 
@@ -76,7 +75,7 @@ public class Presenter implements ActionListener{
 		Movie movie = new Movie();
 
 		System.out.println(movie);
-	
+
 	}
 
 	public void ShowCustomers() {
@@ -86,7 +85,6 @@ public class Presenter implements ActionListener{
 		System.out.println(customer);
 	}
 
-
 	public static void main(String[] args) {
 		new Presenter();
 	}
@@ -94,29 +92,31 @@ public class Presenter implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		if(command.equals(menu.getLoginButton().getText())){
-			if(customer.isAdmin(menu.getUserText().getText(), menu.getPasswordText().getName())){
+		if (command.equals(menu.getLoginButton().getText())) {
+			if (customer.isAdmin(menu.getUserText().getText(), menu.getPasswordText().getName())) {
 				menu.getMainFrame().dispose();
 				initMenu();
-			}else{
+			} else {
 				JOptionPane.showMessageDialog(menu.getMainFrame(), "Error, acceso no valido", "ERROR",
-                        JOptionPane.ERROR_MESSAGE);
+						JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		if(command.equals(menu.getAddButton().getText())){
+		if (command.equals(menu.getAddButton().getText())) {
 			menu.getMainFrame().dispose();
 			addMenu();
 		}
-		if(command.equals(menu.getAddMovieMenu().getAddMovieButton().getText())){
-			Movie movie = new Movie();
+		if (command.equals(menu.getAddMovieMenu().getAddMovieButton().getText())) {
 			menu.getAddMovieMenu().addMovieOption();
+		}
+		if(command.equals(menu.getAddMovieMenu().getCreateButton().getText())){
+			Movie movie = new Movie();
 			movie.setNameMovies(menu.getAddMovieMenu().getNameMovie().getText());
 			movie.setDescription(menu.getAddMovieMenu().getDescriptionMovie().getText());
 			movie.setTimeMovie(menu.getAddMovieMenu().getFormattedTextField().getText());
-			cinema.setMovies(movie);
-			
-			
+			movie.setMovieGenders(menu.getAddMovieMenu().getMovieGenders());
+			movie.setMovieFormat(menu.getAddMovieMenu().getMovieFormats());
+			movie.setIcon(menu.getAddMovieMenu().getMainIconLabel().getText());
+			System.out.println(movie);
 		}
 	}
 }
-

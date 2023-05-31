@@ -27,11 +27,11 @@ public class Cinema {
 						El Gato con Botas se embarca en un viaje épico para encontrar al mítico Último Deseo y recuperar sus nueve vidas.
 						""");
 		movie1.setTimeMovie("1h 42min");
-		movie1.setMovieGenders(MovieGender.ADVENTURE);
-		movie1.setMovieGenders(MovieGender.ANIMATION);
-		movie1.setMovieGenders(MovieGender.COMEDY);
-		movie1.setMovieFormat(MovieFormat.TWO_D);
-		movie1.setMovieFormat(MovieFormat.THREE_D);
+		movie1.addMovieGenders(MovieGender.ADVENTURE);
+		movie1.addMovieGenders(MovieGender.ANIMATION);
+		movie1.addMovieGenders(MovieGender.COMEDY);
+		movie1.addMovieFormat(MovieFormat.TWO_D);
+		movie1.addMovieFormat(MovieFormat.THREE_D);
 		movie1.setIcon("Cine/Cine/src/resources/Movies/El_Gato_Con_Botas.jpg");
 		movies.add(movie1);
 	}
@@ -119,11 +119,11 @@ public class Cinema {
 						El Gato con Botas se embarca en un viaje épico para encontrar al mítico Último Deseo y recuperar sus nueve vidas.
 						""");
 		movie.setTimeMovie("1h 42min");
-		movie.setMovieGenders(MovieGender.ADVENTURE);
-		movie.setMovieGenders(MovieGender.ANIMATION);
-		movie.setMovieGenders(MovieGender.COMEDY);
-		movie.setMovieFormat(MovieFormat.TWO_D);
-		movie.setMovieFormat(MovieFormat.THREE_D);
+		movie.addMovieGenders(MovieGender.ADVENTURE);
+		movie.addMovieGenders(MovieGender.ANIMATION);
+		movie.addMovieGenders(MovieGender.COMEDY);
+		movie.addMovieFormat(MovieFormat.TWO_D);
+		movie.addMovieFormat(MovieFormat.THREE_D);
 		movie.setIcon("Cine/Cine/src/resources/Movies/El_Gato_Con_Botas.jpg");
 
 		Movie movie2 = new Movie();
@@ -133,12 +133,12 @@ public class Cinema {
 				salvar el mundo explorando otros universos que se conectan con sus vidas pasadas.
 				""");
 		movie2.setTimeMovie("2h 19min");
-		movie2.setMovieGenders(MovieGender.COMEDY);
-		movie2.setMovieGenders(MovieGender.ACTION);
-		movie2.setMovieGenders(MovieGender.ADVENTURE);
-		movie2.setMovieFormat(MovieFormat.TWO_D);
-		movie2.setMovieFormat(MovieFormat.THREE_D);
-		movie2.setMovieFormat(MovieFormat.IMAX);
+		movie2.addMovieGenders(MovieGender.COMEDY);
+		movie2.addMovieGenders(MovieGender.ACTION);
+		movie2.addMovieGenders(MovieGender.ADVENTURE);
+		movie2.addMovieFormat(MovieFormat.TWO_D);
+		movie2.addMovieFormat(MovieFormat.THREE_D);
+		movie2.addMovieFormat(MovieFormat.IMAX);
 
 		Room room = new Room();
 		room.setRoomNumber((short) 1);

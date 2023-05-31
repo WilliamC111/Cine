@@ -42,8 +42,8 @@ public class ImageViewer {
         Movie movie1 = new Movie();
         movie1.setNameMovies("John Wick");
         movie1.setTimeMovie("1h 42min");
-        movie1.setMovieGenders(MovieGender.ACTION);
-        movie1.setMovieFormat(MovieFormat.TWO_D);
+        movie1.addMovieGenders(MovieGender.ACTION);
+        movie1.addMovieFormat(MovieFormat.TWO_D);
         movie1.setIcon("/resources/action/image1.jpg");
 
         ImageIcon image1 = new ImageIcon(getClass().getResource(movie1.getIcon().getDescription()));
@@ -69,8 +69,8 @@ public class ImageViewer {
         Movie movie2 = new Movie();
         movie2.setNameMovies("Ghosteado");
         movie2.setTimeMovie("1h 42min");
-        movie2.setMovieGenders(MovieGender.ACTION);
-        movie2.setMovieFormat(MovieFormat.TWO_D);
+        movie2.addMovieGenders(MovieGender.ACTION);
+        movie2.addMovieFormat(MovieFormat.TWO_D);
         movie2.setIcon("/resources/action/image2.jpg");
 
         ImageIcon image2 = new ImageIcon(getClass().getResource(movie2.getIcon().getDescription()));
@@ -96,8 +96,8 @@ public class ImageViewer {
         Movie movie3 = new Movie();
         movie3.setNameMovies("Al borde de la extinción");
         movie3.setTimeMovie("1h 42min");
-        movie3.setMovieGenders(MovieGender.ACTION);
-        movie3.setMovieFormat(MovieFormat.TWO_D);
+        movie3.addMovieGenders(MovieGender.ACTION);
+        movie3.addMovieFormat(MovieFormat.TWO_D);
         movie3.setIcon("/resources/action/image3.jpg");
 
         ImageIcon image3 = new ImageIcon(getClass().getResource(movie3.getIcon().getDescription()));
@@ -130,8 +130,8 @@ public class ImageViewer {
         Movie movie4 = new Movie();
         movie4.setNameMovies("El gato con botas");
         movie4.setTimeMovie("1h 42min");
-        movie4.setMovieGenders(MovieGender.ACTION);
-        movie4.setMovieFormat(MovieFormat.TWO_D);
+        movie4.addMovieGenders(MovieGender.ACTION);
+        movie4.addMovieFormat(MovieFormat.TWO_D);
         movie4.setIcon("/resources/animation/image4.jpg");
 
         ImageIcon image4 = new ImageIcon(getClass().getResource(movie4.getIcon().getDescription()));
@@ -157,8 +157,8 @@ public class ImageViewer {
         Movie movie5 = new Movie();
         movie5.setNameMovies("Mario Bros");
         movie5.setTimeMovie("1h 42min");
-        movie5.setMovieGenders(MovieGender.ACTION);
-        movie5.setMovieFormat(MovieFormat.TWO_D);
+        movie5.addMovieGenders(MovieGender.ACTION);
+        movie5.addMovieFormat(MovieFormat.TWO_D);
         movie5.setIcon("/resources/animation/image5.jpg");
 
         ImageIcon image5 = new ImageIcon(getClass().getResource(movie5.getIcon().getDescription()));
@@ -184,8 +184,8 @@ public class ImageViewer {
         Movie movie6 = new Movie();
         movie6.setNameMovies("Pinocho");
         movie6.setTimeMovie("1h 42min");
-        movie6.setMovieGenders(MovieGender.ACTION);
-        movie6.setMovieFormat(MovieFormat.TWO_D);
+        movie6.addMovieGenders(MovieGender.ACTION);
+        movie6.addMovieFormat(MovieFormat.TWO_D);
         movie6.setIcon("/resources/animation/image6.jpg");
 
         ImageIcon image6 = new ImageIcon(getClass().getResource(movie6.getIcon().getDescription()));
@@ -217,8 +217,8 @@ public class ImageViewer {
         Movie movie7 = new Movie();
         movie7.setNameMovies("La monja");
         movie7.setTimeMovie("1h 42min");
-        movie7.setMovieGenders(MovieGender.ACTION);
-        movie7.setMovieFormat(MovieFormat.TWO_D);
+        movie7.addMovieGenders(MovieGender.ACTION);
+        movie7.addMovieFormat(MovieFormat.TWO_D);
         movie7.setIcon("/resources/horror/image7.jpg");
 
         ImageIcon image7 = new ImageIcon(getClass().getResource(movie7.getIcon().getDescription()));
@@ -244,8 +244,8 @@ public class ImageViewer {
         Movie movie8 = new Movie();
         movie8.setNameMovies("El exorcista del papa");
         movie8.setTimeMovie("1h 42min");
-        movie8.setMovieGenders(MovieGender.ACTION);
-        movie8.setMovieFormat(MovieFormat.TWO_D);
+        movie8.addMovieGenders(MovieGender.ACTION);
+        movie8.addMovieFormat(MovieFormat.TWO_D);
         movie8.setIcon("/resources/horror/image8.jpg");
 
         ImageIcon image8 = new ImageIcon(getClass().getResource(movie8.getIcon().getDescription()));
@@ -271,8 +271,8 @@ public class ImageViewer {
         Movie movie9 = new Movie();
         movie9.setNameMovies("Winnie the Pooh, Sangre y Miel");
         movie9.setTimeMovie("1h 42min");
-        movie9.setMovieGenders(MovieGender.ACTION);
-        movie9.setMovieFormat(MovieFormat.TWO_D);
+        movie9.addMovieGenders(MovieGender.ACTION);
+        movie9.addMovieFormat(MovieFormat.TWO_D);
         movie9.setIcon("/resources/horror/image9.jpg");
 
         ImageIcon image9 = new ImageIcon(getClass().getResource(movie9.getIcon().getDescription()));
@@ -304,8 +304,8 @@ public class ImageViewer {
         Movie movie10 = new Movie();
         movie10.setNameMovies("Avatar");
         movie10.setTimeMovie("1h 42min");
-        movie10.setMovieGenders(MovieGender.ACTION);
-        movie10.setMovieFormat(MovieFormat.TWO_D);
+        movie10.addMovieGenders(MovieGender.ACTION);
+        movie10.addMovieFormat(MovieFormat.TWO_D);
         movie10.setIcon("/resources/sciencefiction/image10.jpg");
 
         ImageIcon image10 = new ImageIcon(getClass().getResource(movie10.getIcon().getDescription()));
@@ -331,8 +331,8 @@ public class ImageViewer {
         Movie movie11 = new Movie();
         movie11.setNameMovies("Guardianes de la Galaxia");
         movie11.setTimeMovie("1h 42min");
-        movie11.setMovieGenders(MovieGender.ACTION);
-        movie11.setMovieFormat(MovieFormat.TWO_D);
+        movie11.addMovieGenders(MovieGender.ACTION);
+        movie11.addMovieFormat(MovieFormat.TWO_D);
         movie11.setIcon("/resources/sciencefiction/image11.jpg");
 
         ImageIcon image11= new ImageIcon(getClass().getResource(movie11.getIcon().getDescription()));
@@ -358,8 +358,8 @@ public class ImageViewer {
         Movie movie12 = new Movie();
         movie12.setNameMovies("Todo en todas partes al mismo tiempo");
         movie12.setTimeMovie("1h 42min");
-        movie12.setMovieGenders(MovieGender.ACTION);
-        movie12.setMovieFormat(MovieFormat.TWO_D);
+        movie12.addMovieGenders(MovieGender.ACTION);
+        movie12.addMovieFormat(MovieFormat.TWO_D);
         movie12.setIcon("/resources/sciencefiction/image12.jpg");
 
         ImageIcon image12 = new ImageIcon(getClass().getResource(movie12.getIcon().getDescription()));
