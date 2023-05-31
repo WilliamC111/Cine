@@ -386,7 +386,4 @@ public class ImageViewer {
         tabbedPane.addTab("CIENCIA FICCIÓN", panel4);
     }
 
-    public static void main(String[] args) {
-        new ImageViewer();
-    }
 }
