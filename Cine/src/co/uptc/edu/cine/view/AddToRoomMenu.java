@@ -12,9 +12,11 @@ public class AddToRoomMenu {
 
     private JFrame roomFrame;
     private JPanel roomPanel;
-    private JLabel titleLabel, selectRoomNumber;
+    private JLabel titleLabel, selectRoomNumber, selectMovie;
     private JButton createRoomButton, addMovieToRoomButton, backButton, createButton;
     private JTextField roomNumberField;
+    private JComboBox<Short> roomNumberBox;
+    private JComboBox<String> movieBox;
 
     private Font mainFont;
     private Color mainColor;
@@ -33,9 +35,9 @@ public class AddToRoomMenu {
         roomFrame.setResizable(false);
         roomFrame.setIconImage(mainIcon.getImage());
 
-        createRoom();
-        //createRoomOption();
-
+        // createRoom();
+        // createRoomOption();
+        addMovieToRoomOption(new Cinema());
         roomFrame.setVisible(true);
 
     }
@@ -78,7 +80,7 @@ public class AddToRoomMenu {
         roomFrame.add(roomPanel);
     }
 
-    public void createRoomOption(){
+    public void createRoomOption() {
         roomFrame = new JFrame();
         roomFrame.setTitle("Crear Sala");
         roomFrame.setSize(600, 300);
@@ -117,7 +119,7 @@ public class AddToRoomMenu {
         roomFrame.setContentPane(roomPanel);
     }
 
-    public void addMovieToRoomOption(Cinema cinema){
+    public void addMovieToRoomOption(Cinema cinema) {
         roomPanel = new JPanel();
         roomPanel.setLayout(null);
         roomPanel.setBackground(mainColor);
@@ -127,8 +129,44 @@ public class AddToRoomMenu {
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setBounds(150, 50, 400, 60);
         roomPanel.add(titleLabel);
-        
 
+        selectRoomNumber = new JLabel("Elija numero de sala:");
+        selectRoomNumber.setFont(new Font("Arial", Font.BOLD, 20));
+        selectRoomNumber.setForeground(Color.WHITE);
+        selectRoomNumber.setBounds(50, 150, 200, 30);
+        roomPanel.add(selectRoomNumber);
+
+        roomNumberBox = new JComboBox<Short>();
+        short[] roomNumbers = new short[cinema.getRooms().size()];
+        for (int i = 0; i < cinema.getRooms().size(); i++) {
+            roomNumbers[i] = cinema.getRooms().get(i).getRoomNumber();
+            roomNumberBox.addItem(roomNumbers[i]);
+        }
+        roomNumberBox.setBounds(260, 150, 60, 30);
+        roomNumberBox.setFont(new Font("Arial", Font.BOLD, 20));
+        roomNumberBox.setForeground(mainColor);
+        roomPanel.add(roomNumberBox);
+
+        selectMovie = new JLabel("Elija película a añadir:");
+        selectMovie.setFont(new Font("Arial", Font.BOLD, 20));
+        selectMovie.setForeground(Color.WHITE);
+        selectMovie.setBounds(50, 200, 250, 30);
+        roomPanel.add(selectMovie);
+
+        movieBox = new JComboBox<String>();
+        String[] movies = new String[cinema.getMovies().size()];
+        for (int i = 0; i < cinema.getMovies().size(); i++) {
+            movies[i] = cinema.getMovies().get(i).getNameMovies();
+            movieBox.addItem(movies[i]);
+        }
+        movieBox.setBounds(300, 200, 200, 30);
+        movieBox.setFont(new Font("Arial", Font.BOLD, 20));
+        movieBox.setForeground(mainColor);
+        roomPanel.add(movieBox);
+
+        roomFrame.setContentPane(roomPanel);
+
+        System.out.println(cinema.getRooms());
     }
 
     public JFrame getRoomFrame() {
@@ -145,6 +183,10 @@ public class AddToRoomMenu {
 
     public JLabel getSelectRoomNumber() {
         return selectRoomNumber;
+    }
+
+    public JLabel getSelectMovie() {
+        return selectMovie;
     }
 
     public JButton getCreateRoomButton() {
@@ -165,6 +207,14 @@ public class AddToRoomMenu {
 
     public JButton getCreateButton() {
         return createButton;
+    }
+
+    public JComboBox<Short> getRoomNumberBox() {
+        return roomNumberBox;
+    }
+
+    public JComboBox<String> getMovieBox() {
+        return movieBox;
     }
 
     public static void main(String[] args) {

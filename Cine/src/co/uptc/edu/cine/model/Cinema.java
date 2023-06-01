@@ -50,6 +50,17 @@ public class Cinema {
 		
 		movies.add(movie1);
 		movies.add(movie2);
+
+		Room room1 = new Room();
+		room1.setRoomNumber((short) 1);
+		room1.addMovie(movie1);
+
+		Room room2 = new Room();
+		room2.setRoomNumber((short) 2);
+		room2.addMovie(movie2);
+
+		rooms.add(room1);
+		rooms.add(room2);
 	}
 
 	public void addRoom(Room room) {
@@ -127,12 +138,12 @@ public class Cinema {
 	public static void main(String[] args) {
 		Cinema cinema = new Cinema();
 
-
 		Room room = new Room();
 		room.setRoomNumber((short) 1);
 		room.showSeats();
 		room.reserveSeats('C', 5);
 		room.showSeats();
+		System.out.println(room);
 
 		cinema.addRoom(room);
 		cinema.addMovieForRoom(room.getRoomNumber(), 1);
