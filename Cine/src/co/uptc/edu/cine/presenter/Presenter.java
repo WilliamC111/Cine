@@ -16,39 +16,6 @@ public class Presenter implements ActionListener {
 
 	public Presenter() {
 		menu = new MainMenu(this);
-		// init();
-	}
-
-	public void init() {
-		String menu = "       .....BIENVENIDOS A CINE.....      " + "\n1 - Registar Cliente\n2 - Mostrar Cartelera"
-				+ "\n3 - Ver usuarios\n4 - Salir";
-		try {
-			int option = view.readGraphicInt(menu + "\nSeleccione una opción:");
-			switch (option) {
-				case 1:
-					createCustomer();
-					break;
-				case 2:
-					;
-					break;
-				case 3:
-					ShowCustomers();
-					break;
-
-				case 4:
-					view.showGraphicMessage("----Adios----");
-					System.exit(0);
-					break;
-				default:
-					view.showErrorMessage("OPCION NO VALIDA");
-					init();
-					break;
-			}
-		} catch (Exception e) {
-			view.showErrorMessage("OPCION NO VALIDA");
-			init();
-		}
-
 	}
 
 	public void initMenu() {
@@ -59,39 +26,10 @@ public class Presenter implements ActionListener {
 		menu.addMovieMenu();
 	}
 
-	public void createCustomer() {
-		String menu1 = "       ...Registrar cliente...      "
-				+ "\n1 - Ingrese Nombre\n2 - Ingrese identificacion del Cliente\n3 - Salir";
-
-		view.showGraphicMessage(menu1);
-		Customer customer = new Customer();
-		customer.setName(view.readGraphicString("Ingrese nombre del cliente:"));
-		customer.setID(view.readGraphicInt("Ingrese identificacion del cliente:"));
-		view.showGraphicMessage("CLIENTE CREADO");
-		init();
-	}
-
-	public void ShowBillboard() {
-		Movie movie = new Movie();
-
-		System.out.println(movie);
-
-	}
-
-	public void ShowCustomers() {
-		Customer customer = new Customer();
-		customer.setName("Juan Ramirez");
-		customer.setID(123456789);
-		System.out.println(customer);
-	}
-
-	public static void main(String[] args) {
-		new Presenter();
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
+		// Admin inicio
 		if (command.equals(menu.getLoginButton().getText())) {
 			if (customer.isAdmin(menu.getUserText().getText(), menu.getPasswordText().getName())) {
 				menu.getMainFrame().dispose();
@@ -101,14 +39,22 @@ public class Presenter implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
 			}
 		}
+		// Agregar película
 		if (command.equals(menu.getAddButton().getText())) {
 			menu.getMainFrame().dispose();
 			addMenu();
 		}
+		// Creacion película
 		if (command.equals(menu.getAddMovieMenu().getAddMovieButton().getText())) {
 			menu.getAddMovieMenu().addMovieOption();
 		}
-		if(command.equals(menu.getAddMovieMenu().getCreateButton().getText())){
+		// Volver al menu
+		if (command.equals(menu.getAddMovieMenu().getBackButton().getText())) {
+			menu.getAddMovieMenu().getAddMovieFrame().dispose();
+			initMenu();
+		}
+		// Creacion pelicula - Crear película
+		if (command.equals(menu.getAddMovieMenu().getCreateButton().getText())) {
 			Movie movie = new Movie();
 			movie.setNameMovies(menu.getAddMovieMenu().getNameMovie().getText());
 			movie.setDescription(menu.getAddMovieMenu().getDescriptionMovie().getText());
@@ -116,7 +62,14 @@ public class Presenter implements ActionListener {
 			movie.setMovieGenders(menu.getAddMovieMenu().getMovieGenders());
 			movie.setMovieFormat(menu.getAddMovieMenu().getMovieFormats());
 			movie.setIcon(menu.getAddMovieMenu().getMainIconLabel().getText());
-			System.out.println(movie);
+			cinema.setMovies(movie);
+			System.out.println(cinema.getMovies());
+			menu.getAddMovieMenu().getAddMovieFrame().dispose();
+			addMenu();
 		}
+	}
+
+	public static void main(String[] args) {
+		new Presenter();
 	}
 }

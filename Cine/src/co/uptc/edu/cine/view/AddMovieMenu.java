@@ -1,7 +1,6 @@
 package co.uptc.edu.cine.view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,7 +10,6 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.jar.Manifest;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -38,15 +36,12 @@ public class AddMovieMenu {
             shortFilmOption, sportOption, superheroOption, thrillerOption, warOption, westernOption, TwoDOption,
             ThreeDOption, FourKOption, ImaxOption, UltraTwoDOption;
     private JFormattedTextField formattedTextField;
-
-    private Cinema cinema;
-
+    
     private ArrayList<String> movieFormats = new ArrayList<String>();
     private ArrayList<String> movieGenders = new ArrayList<String>();
 
     public AddMovieMenu(ActionListener actionListener) {
         this.actionListener = actionListener;
-        cinema = new Cinema();
 
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -84,6 +79,7 @@ public class AddMovieMenu {
         backButton.setBackground(mainColor);
         backButton.setFocusPainted(false);
         backButton.setBounds(100, 400, 280, 40);
+        backButton.addActionListener(actionListener);
         addMoviePanel.add(backButton);
 
         ediButton = new JButton("Editar Película");
@@ -277,15 +273,16 @@ public class AddMovieMenu {
         addImageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setCurrentDirectory(new File("Cine/Cine/src/resources"));
                 fileChooser.setFileFilter(new FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png", "gif"));
                 int result = fileChooser.showOpenDialog(addMovieFrame);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
                     ImageIcon imageIcon = new ImageIcon(selectedFile.getAbsolutePath());
-                    Image scaled = imageIcon.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);  
-                    ImageIcon scaledImage = new ImageIcon(scaled);                  
+                    Image scaled = imageIcon.getImage().getScaledInstance(300, 400, Image.SCALE_DEFAULT);
+                    ImageIcon scaledImage = new ImageIcon(scaled);
                     mainIconLabel.setIcon(scaledImage);
-                    
+
                 }
             }
         });
@@ -534,6 +531,7 @@ public class AddMovieMenu {
 
         historyOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (historyOption.isSelected()) {
                     movieGender = movieGender.HISTORY;
@@ -552,6 +550,7 @@ public class AddMovieMenu {
 
         horrorOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (horrorOption.isSelected()) {
                     movieGender = movieGender.HORROR;
@@ -570,6 +569,7 @@ public class AddMovieMenu {
 
         musicOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (musicOption.isSelected()) {
                     movieGender = movieGender.MUSIC;
@@ -588,6 +588,7 @@ public class AddMovieMenu {
 
         musicalOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (musicalOption.isSelected()) {
                     movieGender = movieGender.MUSICAL;
@@ -606,6 +607,7 @@ public class AddMovieMenu {
 
         misteryOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (misteryOption.isSelected()) {
                     movieGender = movieGender.MISTERY;
@@ -624,6 +626,7 @@ public class AddMovieMenu {
 
         romanceOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (romanceOption.isSelected()) {
                     movieGender = movieGender.ROMANCE;
@@ -642,6 +645,7 @@ public class AddMovieMenu {
 
         scifiOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (scifiOption.isSelected()) {
                     movieGender = movieGender.SCIFI;
@@ -660,6 +664,7 @@ public class AddMovieMenu {
 
         shortFilmOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (shortFilmOption.isSelected()) {
                     movieGender = movieGender.SHORT_FILM;
@@ -678,6 +683,7 @@ public class AddMovieMenu {
 
         sportOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (sportOption.isSelected()) {
                     movieGender = movieGender.SPORT;
@@ -696,6 +702,7 @@ public class AddMovieMenu {
 
         superheroOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (superheroOption.isSelected()) {
                     movieGender = movieGender.SUPERHERO;
@@ -714,6 +721,7 @@ public class AddMovieMenu {
 
         thrillerOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (thrillerOption.isSelected()) {
                     movieGender = movieGender.THRILLER;
@@ -732,6 +740,7 @@ public class AddMovieMenu {
 
         warOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (warOption.isSelected()) {
                     movieGender = movieGender.WAR;
@@ -750,6 +759,7 @@ public class AddMovieMenu {
 
         westernOption.addItemListener(new ItemListener() {
             MovieGender movieGender;
+
             public void itemStateChanged(ItemEvent e) {
                 if (westernOption.isSelected()) {
                     movieGender = movieGender.WESTERN;
@@ -774,7 +784,7 @@ public class AddMovieMenu {
         return movieFormats;
     }
 
-    public ArrayList<String> getMovieGenders(){
+    public ArrayList<String> getMovieGenders() {
         return movieGenders;
     }
 
@@ -792,43 +802,19 @@ public class AddMovieMenu {
     }
 
     public void deleteMovieOption() {
-        System.out.println(cinema.getMovies().get(0).getNameMovies());
 
-        JComboBox<Movie> movieList = new JComboBox<>(cinema.getMovies().toArray(new Movie[0]));
-        movieList.setRenderer(new DefaultListCellRenderer() {
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                    boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof Movie) {
-                    Movie movie = (Movie) value;
-                    setText(movie.getNameMovies());
-                }
-                return this;
-            }
-        });
-        JOptionPane.showMessageDialog(null, movieList, "Seleccione la película a eliminar",
-                JOptionPane.QUESTION_MESSAGE);
-        cinema.getMovies().remove(movieList.getSelectedItem());
-
-        System.out.println((cinema.getMovies().isEmpty()) ? "No hay peliculas" : "Hay peliculas");
     }
 
     public void editMovieOption() {
-        JComboBox<Movie> movieList = new JComboBox<>(cinema.getMovies().toArray(new Movie[0]));
-        movieList.setRenderer(new DefaultListCellRenderer() {
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                    boolean isSelected, boolean cellHasFocus) {
-                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (value instanceof Movie) {
-                    Movie movie = (Movie) value;
-                    setText(movie.getNameMovies());
-                }
-                return this;
-            }
-        });
-        JOptionPane.showMessageDialog(null, movieList, "Seleccione la película a editar",
-                JOptionPane.QUESTION_MESSAGE);
 
+    }
+
+    public JFrame getAddMovieFrame() {
+        return addMovieFrame;
+    }
+
+    public JPanel getAddMoviePanel() {
+        return addMoviePanel;
     }
 
     public JButton getAddMovieButton() {
@@ -851,7 +837,7 @@ public class AddMovieMenu {
         return addImageButton;
     }
 
-    public JButton getCreateButton(){
+    public JButton getCreateButton() {
         return createButton;
     }
 
