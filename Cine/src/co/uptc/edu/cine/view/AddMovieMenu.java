@@ -26,7 +26,7 @@ public class AddMovieMenu {
 
     private JFrame addMovieFrame;
     private JPanel addMoviePanel;
-    private JButton addMovieButton, backButton, ediButton, deleteButton, addImageButton, createButton;
+    private JButton addMovieButton, backButton, addToRoomButton, deleteButton, addImageButton, createButton;
     private JLabel nameLabel, descriptionLabel, formatLabel, timeLabel, mainIconLabel, genderLabel;
     private JTextField nameMovie;
     private JTextArea descriptionMovie;
@@ -82,13 +82,13 @@ public class AddMovieMenu {
         backButton.addActionListener(actionListener);
         addMoviePanel.add(backButton);
 
-        ediButton = new JButton("Editar Película");
-        ediButton.setFont(new Font("Arial", Font.BOLD, 30));
-        ediButton.setForeground(Color.WHITE);
-        ediButton.setBackground(mainColor);
-        ediButton.setFocusPainted(false);
-        ediButton.setBounds(100, 200, 280, 40);
-        addMoviePanel.add(ediButton);
+        addToRoomButton = new JButton("Agregar a Sala");
+        addToRoomButton.setFont(new Font("Arial", Font.BOLD, 30));
+        addToRoomButton.setForeground(Color.WHITE);
+        addToRoomButton.setBackground(mainColor);
+        addToRoomButton.setFocusPainted(false);
+        addToRoomButton.setBounds(100, 200, 280, 40);
+        addMoviePanel.add(addToRoomButton);
 
         deleteButton = new JButton("Eliminar Película");
         deleteButton.setFont(new Font("Arial", Font.BOLD, 30));
@@ -96,6 +96,7 @@ public class AddMovieMenu {
         deleteButton.setBackground(mainColor);
         deleteButton.setFocusPainted(false);
         deleteButton.setBounds(100, 300, 280, 40);
+        deleteButton.addActionListener(actionListener);
         addMoviePanel.add(deleteButton);
 
         ImageIcon image1 = new ImageIcon("Cine/Cine/src/resources/Icons/AddMenuImage.jpg");
@@ -805,7 +806,7 @@ public class AddMovieMenu {
 
     }
 
-    public void editMovieOption() {
+    public void addToRoomOption() {
 
     }
 
@@ -825,8 +826,8 @@ public class AddMovieMenu {
         return backButton;
     }
 
-    public JButton getEdiButton() {
-        return ediButton;
+    public JButton getAddToRoomButton() {
+        return addToRoomButton;
     }
 
     public JButton getDeleteButton() {

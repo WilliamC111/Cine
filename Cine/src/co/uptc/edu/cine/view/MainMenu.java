@@ -171,6 +171,7 @@ public class MainMenu {
         billBoardButtonConstraints.gridwidth = 0;
         billBoardButtonConstraints.anchor = GridBagConstraints.CENTER;
         billBoardButtonConstraints.insets.bottom = 20;
+        billBoardButton.addActionListener(actionListener);
         mainPanel.add(billBoardButton, billBoardButtonConstraints);
 
         saleButton = new JButton("Venta de Boletas");
@@ -220,7 +221,11 @@ public class MainMenu {
     }
 
     public AddMovieMenu getAddMovieMenu() {
-        return  this.addMovieMenu;
+        return  addMovieMenu;
+    }
+
+    public ImageViewer getImageViewer() {
+        return imageViewer;
     }
 
     public JLabel getTitleLabel() {

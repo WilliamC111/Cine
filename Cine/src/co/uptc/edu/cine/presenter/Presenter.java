@@ -44,6 +44,11 @@ public class Presenter implements ActionListener {
 			menu.getMainFrame().dispose();
 			addMenu();
 		}
+		// Mostrar cartelera
+		if (command.equals(menu.getBillBoardButton().getText())) {
+			menu.getMainFrame().dispose();
+			menu.viewMovieLists();
+		}
 		// Creacion película
 		if (command.equals(menu.getAddMovieMenu().getAddMovieButton().getText())) {
 			menu.getAddMovieMenu().addMovieOption();
