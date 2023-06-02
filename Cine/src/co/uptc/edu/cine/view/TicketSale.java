@@ -14,6 +14,8 @@ import co.uptc.edu.cine.model.MovieFormat;
 import co.uptc.edu.cine.model.Room;
 
 public class TicketSale {
+    private ActionListener actionListener;
+
     private JFrame ticketsFrame;
     private JPanel ticketsPanel;
     private JLabel titleLabel;
@@ -25,6 +27,7 @@ public class TicketSale {
     private JComboBox<String> formatComboBox;
     private JButton compareTicketsButton;
     private JButton totalButton;
+    private JButton backButton; // Botón para volver a MainMenu
 
     private Font mainFont;
     private Color mainColor;
@@ -34,6 +37,7 @@ public class TicketSale {
 
     public TicketSale(ActionListener actionListener, Cinema cinema) {
         this.cinema = cinema;
+
 
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
@@ -48,6 +52,8 @@ public class TicketSale {
         ticketsFrame.setIconImage(mainIcon.getImage());
 
         sellTickets(cinema);
+
+        ticketsFrame.setVisible(true);
     }
 
     public void sellTickets(Cinema cinema) {
@@ -98,6 +104,10 @@ public class TicketSale {
         totalButton = new JButton("Total");
         totalButton.setBounds(500, 250, 200, 70);
         ticketsPanel.add(totalButton);
+
+        backButton = new JButton("Volver");
+        backButton.setBounds(500, 330, 200, 30);
+        ticketsPanel.add(backButton);
 
         ticketsFrame.getContentPane().add(ticketsPanel);
 
@@ -150,6 +160,14 @@ public class TicketSale {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 }
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainMenu mainMenu = new MainMenu(actionListener);
+                ticketsFrame.dispose();
             }
         });
     }
