@@ -153,4 +153,15 @@ public class Cinema {
 
 		System.out.println(cinema.buyTickets(2, 1, 1, MovieFormat.THREE_D));
 	}
+
+	public void setRooms(Room room1) {
+	}
+
+	public ArrayList<MovieFormat> getFormats() {
+		return null;
+	}
+
+	public String[] getMovieFormatsFromCinema() {
+		return null;
+	}
 }

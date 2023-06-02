@@ -10,6 +10,7 @@ import javax.swing.*;
 import co.uptc.edu.cine.model.Cinema;
 import co.uptc.edu.cine.model.Movie;
 import co.uptc.edu.cine.model.Room;
+import co.uptc.edu.cine.model.MovieFormat;
 
 public class TicketSale {
     private ActionListener actionListener;
@@ -20,7 +21,11 @@ public class TicketSale {
     private JButton chooseMovieButton;
     private JComboBox<String> movieComboBox;
     private JLabel chooseMovieLabel;
-    private JComboBox<String> roomComboBox; // Nuevo JComboBox para elegir la sala
+    private JComboBox<String> roomComboBox;
+    private JLabel chooseFormatLabel;
+    private JComboBox<String> formatComboBox;
+    private JButton compareTicketsButton;
+    private JButton totalButton;
 
     private Font mainFont;
     private Color mainColor;
@@ -62,30 +67,70 @@ public class TicketSale {
         chooseMovieLabel.setForeground(Color.WHITE);
         ticketsPanel.add(chooseMovieLabel);
 
-        String[] movieOptions = getMovieNamesFromCinema(); // Obtener nombres de películas del objeto Cinema
+        String[] movieOptions = getMovieNamesFromCinema();
         movieComboBox = new JComboBox<>(movieOptions);
         movieComboBox.setBounds(80, 150, 200, 30);
         ticketsPanel.add(movieComboBox);
-
-       
 
         JLabel chooseRoomLabel = new JLabel("Elegir Sala");
         chooseRoomLabel.setBounds(80, 200, 200, 30);
         chooseRoomLabel.setForeground(Color.WHITE);
         ticketsPanel.add(chooseRoomLabel);
 
-        String[] roomOptions = getRoomNumbersFromCinema(); // Obtener números de salas del objeto Cinema
+        String[] roomOptions = getRoomNumbersFromCinema();
         roomComboBox = new JComboBox<>(roomOptions);
         roomComboBox.setBounds(80, 250, 200, 30);
         ticketsPanel.add(roomComboBox);
 
+        chooseFormatLabel = new JLabel("Elegir Formato");
+        chooseFormatLabel.setBounds(80, 300, 200, 30);
+        chooseFormatLabel.setForeground(Color.WHITE);
+        ticketsPanel.add(chooseFormatLabel);
+
+        String[] formatOptions = getMovieFormatsFromCinema();
+        formatComboBox = new JComboBox<>(formatOptions);
+        formatComboBox.setBounds(80, 350, 200, 30);
+        ticketsPanel.add(formatComboBox);
+
+        compareTicketsButton = new JButton("Comprar Boletas");
+        compareTicketsButton.setBounds(500, 150, 200, 30);
+        ticketsPanel.add(compareTicketsButton);
+
+        totalButton = new JButton("Total");
+        totalButton.setBounds(500, 350, 200, 60);
+        ticketsPanel.add(totalButton);
+
         ticketsFrame.add(ticketsPanel);
+
+        compareTicketsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String input = JOptionPane.showInputDialog(ticketsFrame, "Ingrese un número (1-5):");
+                try {
+                    int number = Integer.parseInt(input);
+                    if (number >= 1 && number <= 5) {
+
+                    } else {
+                        JOptionPane.showMessageDialog(ticketsFrame, "El número debe estar entre 1 y 5.",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(ticketsFrame, "Debe ingresar un número válido.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        totalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
     }
 
     private String[] getMovieNamesFromCinema() {
         Cinema cinema = new Cinema();
 
-        // Agregar películas al objeto Cinema
         Movie movie1 = new Movie();
         cinema.setMovies(movie1);
         Movie movie2 = new Movie();
@@ -103,9 +148,6 @@ public class TicketSale {
     private String[] getRoomNumbersFromCinema() {
         Cinema cinema = new Cinema();
 
-        // Agregar salas al objeto Cinema
-        // ...
-
         ArrayList<Room> rooms = cinema.getRooms();
         String[] roomNumbers = new String[rooms.size()];
         for (int i = 0; i < rooms.size(); i++) {
@@ -113,6 +155,18 @@ public class TicketSale {
         }
 
         return roomNumbers;
+    }
+
+    private String[] getMovieFormatsFromCinema() {
+        Cinema cinema = new Cinema();
+
+        MovieFormat[] formats = MovieFormat.values();
+        String[] formatNames = new String[formats.length];
+        for (int i = 0; i < formats.length; i++) {
+            formatNames[i] = formats[i].getName();
+        }
+
+        return formatNames;
     }
 
     public JFrame getTicketsFrame() {
