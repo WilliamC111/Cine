@@ -1,9 +1,13 @@
 package co.uptc.edu.cine.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +38,7 @@ public class ImageViewer {
 
         frame.setVisible(true);
     }
+    
 
     private void showImages() {
         JPanel panel1 = new JPanel();
@@ -384,6 +389,7 @@ public class ImageViewer {
 
         panel4.setBackground(new Color(0, 0, 128));
         tabbedPane.addTab("CIENCIA FICCIÓN", panel4);
+
     }
 
 }
