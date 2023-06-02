@@ -164,4 +164,8 @@ public class Cinema {
 	public String[] getMovieFormatsFromCinema() {
 		return null;
 	}
+
+	public ArrayList<Integer> getAvailableTickets(int roomNumber, int movieNumber, MovieFormat movieFormat) {
+		return null;
+	}
 }
