@@ -15,6 +15,7 @@ public class Cinema {
 
 
 	public Cinema() {
+		timeMovie= new Time();
 		rooms = new ArrayList<Room>();
 		movies = new ArrayList<Movie>();
 		customers = new ArrayList<Customer>();
@@ -61,6 +62,8 @@ public class Cinema {
 
 		rooms.add(room1);
 		rooms.add(room2);
+
+		
 	}
 
 	public void addRoom(Room room) {
@@ -72,12 +75,11 @@ public class Cinema {
 	}
 
 	public void setTime(int hourMovie, int minuteMovie) {
-		timeMovie = new Time();
 		timeMovie.setTime(hourMovie, minuteMovie);
 	}
 
-	public String getTime() {
-		return timeMovie.getFilmTime();
+	public Time getTimeMovie() {
+		return timeMovie;
 	}
 
 	public void setMovies(Movie movie) {

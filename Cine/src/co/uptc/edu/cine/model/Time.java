@@ -17,6 +17,12 @@ public class Time {
         filmTime = LocalDateTime.of(this.date.getYear(), this.date.getMonth(), this.date.getDayOfMonth(), hour, minute);
     }
 
+    public String timeFilm() {
+        filmTime = LocalDateTime.of(this.date.getYear(), this.date.getMonth(), this.date.getDayOfMonth(),
+                this.date.getHour() + 4, this.date.getMinute());
+        return filmTime.format(formatter);
+    }
+
     public String getFilmTime() {
         return filmTime.format(filmFormatter);
     }

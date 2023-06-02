@@ -32,7 +32,9 @@ public class TicketSale {
 
     private Cinema cinema;
 
-    public TicketSale(ActionListener actionListener) {
+    public TicketSale(ActionListener actionListener, Cinema cinema) {
+        this.cinema = cinema;
+
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -44,11 +46,11 @@ public class TicketSale {
         ticketsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ticketsFrame.setResizable(false);
         ticketsFrame.setIconImage(mainIcon.getImage());
-        cinema = new Cinema();
-        sellTickets();
+
+        sellTickets(cinema);
     }
 
-    public void sellTickets() {
+    public void sellTickets(Cinema cinema) {
         ticketsPanel = new JPanel();
         ticketsPanel.setLayout(null);
         ticketsPanel.setBackground(mainColor);
@@ -133,10 +135,14 @@ public class TicketSale {
                         int total = cinema.buyTickets(quantityTickets, roomNumber, movieNumber, movieFormat);
                         JOptionPane.showMessageDialog(ticketsFrame, "El total es: " + total, "Total",
                                 JOptionPane.INFORMATION_MESSAGE);
+
                         Ticket ticket = new Ticket();
-                        ticket.generateTicket(quantityTicketsString, roomNumber, quantityTicketsString, movieNumber,
-                                quantityTicketsString, quantityTicketsString, quantityTicketsString,
-                                quantityTicketsString, total);
+                        ticket.generateTicket((String) movieComboBox.getSelectedItem(), roomNumber,
+                                movieFormat.toString(), quantityTickets,
+                                durationMovie((String) movieComboBox.getSelectedItem()), quantityTicketsString,
+                                cinema.getTimeMovie().timeFilm(),
+                                cinema.getTimeMovie().getFormatter(), total);
+                        ticket.setVisible(true);
 
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(ticketsFrame,
@@ -146,6 +152,16 @@ public class TicketSale {
                 }
             }
         });
+    }
+
+    private String durationMovie(String option) {
+        String aux = "";
+        for (int i = 0; i < cinema.getMovies().size(); i++) {
+            if (cinema.getMovies().get(i).getNameMovies().equals(option)) {
+                aux = cinema.getMovies().get(i).getTimeMovie();
+            }
+        }
+        return aux;
     }
 
     private String[] getMovieNamesFromCinema() {

@@ -52,7 +52,7 @@ public class Presenter implements ActionListener {
 		}
 		// Venta Boletas
 		if (command.equals("tickets")) {
-			TicketSale ticketSale = new TicketSale(this);
+			TicketSale ticketSale = new TicketSale(this, cinema);
 			ticketSale.getTicketsFrame().setVisible(true);
 			menu.getMainFrame().setVisible(false);
 		}
