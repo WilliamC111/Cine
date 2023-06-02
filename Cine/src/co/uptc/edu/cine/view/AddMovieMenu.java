@@ -70,15 +70,17 @@ public class AddMovieMenu {
         addMovieButton.setBackground(mainColor);
         addMovieButton.setFocusPainted(false);
         addMovieButton.setBounds(100, 100, 280, 40);
+        addMovieButton.setActionCommand("Create movie");
         addMovieButton.addActionListener(actionListener);
         addMoviePanel.add(addMovieButton);
-
+ 
         backButton = new JButton("Volver");
         backButton.setFont(new Font("Arial", Font.BOLD, 30));
         backButton.setForeground(Color.WHITE);
         backButton.setBackground(mainColor);
         backButton.setFocusPainted(false);
         backButton.setBounds(100, 400, 280, 40);
+        backButton.setActionCommand("Retrun menu");
         backButton.addActionListener(actionListener);
         addMoviePanel.add(backButton);
 
@@ -96,6 +98,7 @@ public class AddMovieMenu {
         deleteButton.setBackground(mainColor);
         deleteButton.setFocusPainted(false);
         deleteButton.setBounds(100, 300, 280, 40);
+        deleteButton.setActionCommand("Delete");
         deleteButton.addActionListener(actionListener);
         addMoviePanel.add(deleteButton);
 
@@ -106,7 +109,7 @@ public class AddMovieMenu {
         label1.setBorder(new LineBorder(Color.WHITE, 5));
         label1.setBounds(435, 75, 300, 425);
         addMoviePanel.add(label1);
-
+        
         addMovieFrame.setContentPane(addMoviePanel);
     }
 
@@ -775,6 +778,7 @@ public class AddMovieMenu {
         createButton.setBackground(mainColor);
         createButton.setFocusPainted(false);
         createButton.setBounds(800, 780, 120, 40);
+        createButton.setActionCommand("Create");
         createButton.addActionListener(actionListener);
         addMoviePanel.add(createButton);
 
@@ -801,9 +805,17 @@ public class AddMovieMenu {
         System.out.println(timeAux);
         return timeAux;
     }
+    public void deleteMethod() {
+    
+    }
 
-    public void deleteMovieOption() {
-
+    public void deleteMovieOption(Cinema cinema, String nameFilm) {
+    	
+    	for (int i = 0; i < cinema.getMovies().size(); i++) {
+			if(cinema.getMovies().get(i).getNameMovies().equals(nameFilm)) {
+				cinema.getMovies().remove(i);
+			}
+		}
     }
 
     public void addToRoomOption() {

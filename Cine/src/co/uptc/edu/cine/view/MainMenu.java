@@ -15,7 +15,6 @@ public class MainMenu {
     private Font mainFont;
     private Color mainColor;
     private ImageIcon mainIcon;
-
     private JFrame mainFrame;
     private JPanel mainPanel;
     private JLabel titleLabel, loginLabel, userLabel, passwordLabel;
@@ -24,7 +23,7 @@ public class MainMenu {
     private JButton loginButton, addButton,billBoardButton, saleButton, historyButton;
     private ImageViewer imageViewer;
     private AddMovieMenu addMovieMenu;
-
+ 
     public MainMenu(ActionListener actionListener) {
         this.actionListener = actionListener;
 
@@ -157,6 +156,7 @@ public class MainMenu {
         addButtonConstraints.gridwidth = 0;
         addButtonConstraints.anchor = GridBagConstraints.CENTER;
         addButtonConstraints.insets.bottom = 20;
+        addButton.setActionCommand("Add");
         addButton.addActionListener(actionListener);
         mainPanel.add(addButton, addButtonConstraints);
 
@@ -171,6 +171,7 @@ public class MainMenu {
         billBoardButtonConstraints.gridwidth = 0;
         billBoardButtonConstraints.anchor = GridBagConstraints.CENTER;
         billBoardButtonConstraints.insets.bottom = 20;
+        billBoardButton.setActionCommand("Show");
         billBoardButton.addActionListener(actionListener);
         mainPanel.add(billBoardButton, billBoardButtonConstraints);
 
