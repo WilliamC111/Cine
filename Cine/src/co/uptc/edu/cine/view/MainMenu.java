@@ -188,6 +188,7 @@ public class MainMenu {
         saleButtonConstraints.gridwidth = 0;
         saleButtonConstraints.anchor = GridBagConstraints.CENTER;
         saleButtonConstraints.insets.bottom = 20;
+        billBoardButton.setActionCommand("tickets");
         mainPanel.add(saleButton, saleButtonConstraints);
 
         historyButton = new JButton("Historial de Ventas");
@@ -280,5 +281,8 @@ public class MainMenu {
 
     public JButton getHistoryButton() {
         return historyButton;
+    }
+
+    public void getTicketsFrame() {
     }
 }

@@ -50,6 +50,11 @@ public class Presenter implements ActionListener {
 			menu.getMainFrame().dispose();
 			menu.viewMovieLists();
 		}
+		//Venta Boletas
+		if(command.equals("tickets")){
+			menu.getMainFrame().dispose();
+			menu.getTicketsPanel;
+		}
 		// Creacion película
 		if (command.equals("Create movie")) {
 			menu.getAddMovieMenu().addMovieOption();
