@@ -2,7 +2,6 @@ package co.uptc.edu.cine.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -14,7 +13,7 @@ public class AddToRoomMenu {
     private JFrame roomFrame;
     private JPanel roomPanel;
     private JLabel titleLabel, selectRoomNumber, selectMovie;
-    private JButton createRoomButton, addMovieToRoomButton, backButton, createButton;
+    private JButton createRoomButton, addMovieToRoomButton, backButton, createButton, createMovieinRoomButton;
     private JTextField roomNumberField;
     private JComboBox<Short> roomNumberBox;
     private JComboBox<String> movieBox;
@@ -58,6 +57,7 @@ public class AddToRoomMenu {
         createRoomButton.setFont(new Font("Arial", Font.BOLD, 30));
         createRoomButton.setForeground(mainColor);
         createRoomButton.setFocusPainted(false);
+        createRoomButton.setActionCommand("Create room");
         createRoomButton.addActionListener(actionListener);
         roomPanel.add(createRoomButton);
 
@@ -66,6 +66,7 @@ public class AddToRoomMenu {
         addMovieToRoomButton.setFont(new Font("Arial", Font.BOLD, 30));
         addMovieToRoomButton.setForeground(mainColor);
         addMovieToRoomButton.setFocusPainted(false);
+        addMovieToRoomButton.setActionCommand("Add movie to room");
         addMovieToRoomButton.addActionListener(actionListener);
         roomPanel.add(addMovieToRoomButton);
 
@@ -74,6 +75,7 @@ public class AddToRoomMenu {
         backButton.setFont(new Font("Arial", Font.BOLD, 30));
         backButton.setForeground(mainColor);
         backButton.setFocusPainted(false);
+        backButton.setActionCommand("Back menu");
         backButton.addActionListener(actionListener);
         roomPanel.add(backButton);
 
@@ -113,13 +115,19 @@ public class AddToRoomMenu {
         createButton.setFont(new Font("Arial", Font.BOLD, 20));
         createButton.setForeground(mainColor);
         createButton.setFocusPainted(false);
+        createButton.setActionCommand("Create this room");
         createButton.addActionListener(actionListener);
         roomPanel.add(createButton);
 
         roomFrame.setContentPane(roomPanel);
+        roomFrame.setVisible(true);
     }
 
     public void addMovieToRoomOption(Cinema cinema) {
+        roomFrame = new JFrame();
+        roomFrame.setTitle("Añadir Película a Sala");
+        roomFrame.setSize(600, 400);
+
         roomPanel = new JPanel();
         roomPanel.setLayout(null);
         roomPanel.setBackground(mainColor);
@@ -127,7 +135,7 @@ public class AddToRoomMenu {
         titleLabel = new JLabel("Añadir Película a sala");
         titleLabel.setFont(mainFont);
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(150, 50, 550, 60);
+        titleLabel.setBounds(70, 50, 500, 60);
         roomPanel.add(titleLabel);
 
         selectRoomNumber = new JLabel("Elija numero de sala:");
@@ -145,6 +153,8 @@ public class AddToRoomMenu {
         roomNumberBox.setBounds(260, 150, 60, 30);
         roomNumberBox.setFont(new Font("Arial", Font.BOLD, 20));
         roomNumberBox.setForeground(mainColor);
+        roomNumberBox.setActionCommand("Select room number");
+        roomNumberBox.addActionListener(actionListener);
         roomPanel.add(roomNumberBox);
 
         selectMovie = new JLabel("Elija película a añadir:");
@@ -162,9 +172,21 @@ public class AddToRoomMenu {
         movieBox.setBounds(300, 200, 200, 30);
         movieBox.setFont(new Font("Arial", Font.BOLD, 20));
         movieBox.setForeground(mainColor);
+        movieBox.setActionCommand("Select movie to add");
+        movieBox.addActionListener(actionListener);
         roomPanel.add(movieBox);
 
+        createMovieinRoomButton = new JButton("Añadir");
+        createMovieinRoomButton.setBounds(220, 300, 100, 30);
+        createMovieinRoomButton.setFont(new Font("Arial", Font.BOLD, 20));
+        createMovieinRoomButton.setForeground(mainColor);
+        createMovieinRoomButton.setFocusPainted(false);
+        createMovieinRoomButton.setActionCommand("Add movie in room");
+        createMovieinRoomButton.addActionListener(actionListener);
+        roomPanel.add(createMovieinRoomButton);
+
         roomFrame.setContentPane(roomPanel);
+        roomFrame.setVisible(true);
 
         System.out.println(cinema.getRooms());
     }
@@ -209,15 +231,15 @@ public class AddToRoomMenu {
         return createButton;
     }
 
+    public JButton getCreateMovieinRoomButton() {
+        return createMovieinRoomButton;
+    }
+
     public JComboBox<Short> getRoomNumberBox() {
         return roomNumberBox;
     }
 
     public JComboBox<String> getMovieBox() {
         return movieBox;
-    }
-
-    public static void main(String[] args) {
-        new AddToRoomMenu(null);
     }
 }

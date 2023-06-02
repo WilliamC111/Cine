@@ -1,37 +1,22 @@
 package co.uptc.edu.cine.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class DeleteWindow extends JFrame {
 
 	private JPanel contentPane;
+	private JComboBox<String> comboBox;
+	private JButton btnDelete;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DeleteWindow frame = new DeleteWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public DeleteWindow() {
+	public DeleteWindow(ActionListener listener) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 275, 143);
 		contentPane = new JPanel();
@@ -39,13 +24,32 @@ public class DeleteWindow extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(44, 11, 180, 40);
+
+		comboBox = new JComboBox<>();
+		comboBox.setBounds(44, 11, 180, 33);
 		contentPane.add(comboBox);
-		
-		JButton btnDelete = new JButton("Eliminar");
+
+		btnDelete = new JButton("Eliminar");
 		btnDelete.setBounds(77, 62, 100, 33);
+		btnDelete.setActionCommand("Delete movie");
+		btnDelete.addActionListener(listener);
 		contentPane.add(btnDelete);
 	}
+
+	public JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox<String> comboBox) {
+		this.comboBox = comboBox;
+	}
+
+	public JButton getBtnDelete() {
+		return btnDelete;
+	}
+
+	public void setBtnDelete(JButton btnDelete) {
+		this.btnDelete = btnDelete;
+	}
+
 }

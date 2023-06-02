@@ -12,6 +12,7 @@ public class Presenter implements ActionListener {
 	Cinema cinema = new Cinema();
 	Customer customer = new Customer();
 	View view = new View();
+	DeleteWindow dWindow = new DeleteWindow(this);
 	private MainMenu menu;
 
 	public Presenter() {
@@ -53,6 +54,11 @@ public class Presenter implements ActionListener {
 		if (command.equals("Create movie")) {
 			menu.getAddMovieMenu().addMovieOption();
 		}
+		// Creacion pelicula - Agregar a sala
+		if (command.equals("Add to room")) {
+			menu.getAddMovieMenu().getAddMovieFrame().dispose();
+			menu.getAddMovieMenu().addToRoomOption();
+		}
 		// Volver al menu
 		if (command.equals("Retrun menu")) {
 			menu.getAddMovieMenu().getAddMovieFrame().dispose();
@@ -73,9 +79,47 @@ public class Presenter implements ActionListener {
 			addMenu();
 		}
 		// Creacion pelicula - Eliminar película
-		if(command.equals("Delete")) {
-			DeleteWindow deleteWindow= new DeleteWindow();
-			deleteWindow.setVisible(true);
+		if (command.equals("Delete")) {
+			menu.chargeDataDeleteWindow(cinema.getMovies(), dWindow);
+			dWindow.setVisible(true);
+		}
+		if (command.equals("Delete movie")) {
+			menu.deleteMovie(cinema.getMovies(), dWindow);
+			dWindow.setVisible(false);
+			for (int i = 0; i < cinema.getMovies().size(); i++) {
+				System.out.println(cinema.getMovies().get(i).toString());
+			}
+		}
+		// Creacion pelicula - crear sala
+		if (command.equals("Create room")) {
+			menu.getAddMovieMenu().getAddToRoomMenu().createRoomOption();
+		}
+		// Creacion pelicula - crear sala - crear
+		if (command.equals("Create this room")) {
+			Room room = new Room();
+			for (int i = 0; i < cinema.getRooms().size(); i++) {
+				if (cinema.getRooms().get(i).getRoomNumber() == Short.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText())) {
+					JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
+							"Error, ya existe una sala con ese número", "ERROR", JOptionPane.ERROR_MESSAGE);
+					return;
+				} else {
+					room.setRoomNumber(Short.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText()));
+					cinema.setRooms(room);
+				}
+			}
+		}
+		// Creacion pelicula - añadir pelicula a sala
+		if(command.equals("Add movie to room")){
+			menu.getAddMovieMenu().getAddToRoomMenu().addMovieToRoomOption(cinema);
+		}
+		// Creacion pelicula - añadir pelicula a sala - añadir
+		if(command.equals("")){
+			
+		}
+		// Creacion pelicula - añadir pelicula a sala - volver
+		if(command.equals("Back menu")){
+			menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame().dispose();
+			addMenu();
 		}
 	}
 

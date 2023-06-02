@@ -36,9 +36,10 @@ public class AddMovieMenu {
             shortFilmOption, sportOption, superheroOption, thrillerOption, warOption, westernOption, TwoDOption,
             ThreeDOption, FourKOption, ImaxOption, UltraTwoDOption;
     private JFormattedTextField formattedTextField;
-    
+
     private ArrayList<String> movieFormats = new ArrayList<String>();
     private ArrayList<String> movieGenders = new ArrayList<String>();
+    private AddToRoomMenu addToRoomMenu;
 
     public AddMovieMenu(ActionListener actionListener) {
         this.actionListener = actionListener;
@@ -73,7 +74,7 @@ public class AddMovieMenu {
         addMovieButton.setActionCommand("Create movie");
         addMovieButton.addActionListener(actionListener);
         addMoviePanel.add(addMovieButton);
- 
+
         backButton = new JButton("Volver");
         backButton.setFont(new Font("Arial", Font.BOLD, 30));
         backButton.setForeground(Color.WHITE);
@@ -90,6 +91,8 @@ public class AddMovieMenu {
         addToRoomButton.setBackground(mainColor);
         addToRoomButton.setFocusPainted(false);
         addToRoomButton.setBounds(100, 200, 280, 40);
+        addToRoomButton.setActionCommand("Add to room");
+        addToRoomButton.addActionListener(actionListener);
         addMoviePanel.add(addToRoomButton);
 
         deleteButton = new JButton("Eliminar Película");
@@ -109,7 +112,7 @@ public class AddMovieMenu {
         label1.setBorder(new LineBorder(Color.WHITE, 5));
         label1.setBounds(435, 75, 300, 425);
         addMoviePanel.add(label1);
-        
+
         addMovieFrame.setContentPane(addMoviePanel);
     }
 
@@ -805,21 +808,27 @@ public class AddMovieMenu {
         System.out.println(timeAux);
         return timeAux;
     }
-    public void deleteMethod() {
-    
+
+    public void deleteMethod(ArrayList<Movie> movies, DeleteWindow deleteWindow) {
+        for (int i = 0; i < movies.size(); i++) {
+            if (movies.get(i).getNameMovies().equals((String) deleteWindow.getComboBox().getSelectedItem())) {
+                movies.remove(i);
+            }
+        }
     }
 
-    public void deleteMovieOption(Cinema cinema, String nameFilm) {
-    	
-    	for (int i = 0; i < cinema.getMovies().size(); i++) {
-			if(cinema.getMovies().get(i).getNameMovies().equals(nameFilm)) {
-				cinema.getMovies().remove(i);
-			}
-		}
+    public void chargeData(ArrayList<Movie> movies, DeleteWindow deleteWindow) {
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+        ArrayList<String> options = new ArrayList<>();
+        for (int i = 0; i < movies.size(); i++) {
+            options.add(movies.get(i).getNameMovies());
+        }
+        comboBoxModel.addAll(options);
+        deleteWindow.getComboBox().setModel(comboBoxModel);
     }
 
     public void addToRoomOption() {
-
+        addToRoomMenu = new AddToRoomMenu(actionListener);
     }
 
     public JFrame getAddMovieFrame() {
@@ -828,6 +837,10 @@ public class AddMovieMenu {
 
     public JPanel getAddMoviePanel() {
         return addMoviePanel;
+    }
+
+    public AddToRoomMenu getAddToRoomMenu() {
+        return addToRoomMenu;
     }
 
     public JButton getAddMovieButton() {

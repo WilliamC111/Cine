@@ -5,9 +5,11 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 
 import javax.swing.*;
+
+import co.uptc.edu.cine.model.Movie;
 
 public class MainMenu {
     ActionListener actionListener;
@@ -211,6 +213,14 @@ public class MainMenu {
 
     public void viewMovieLists(){
         imageViewer = new ImageViewer();
+    }
+
+    public void deleteMovie(ArrayList<Movie> movies,DeleteWindow deleteWindow) {
+    	addMovieMenu.deleteMethod(movies,deleteWindow);
+    }
+
+    public void chargeDataDeleteWindow(ArrayList<Movie> movies,DeleteWindow deleteWindow) {
+    	addMovieMenu.chargeData(movies,deleteWindow);
     }
 
     public JFrame getMainFrame() {
