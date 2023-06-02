@@ -40,26 +40,26 @@ public class Presenter implements ActionListener {
 			}
 		}
 		// Agregar película
-		if (command.equals(menu.getAddButton().getText())) {
+		if (command.equals("Add")) {
 			menu.getMainFrame().dispose();
 			addMenu();
 		}
 		// Mostrar cartelera
-		if (command.equals(menu.getBillBoardButton().getText())) {
+		if (command.equals("Show")) {
 			menu.getMainFrame().dispose();
 			menu.viewMovieLists();
 		}
 		// Creacion película
-		if (command.equals(menu.getAddMovieMenu().getAddMovieButton().getText())) {
+		if (command.equals("Create movie")) {
 			menu.getAddMovieMenu().addMovieOption();
 		}
 		// Volver al menu
-		if (command.equals(menu.getAddMovieMenu().getBackButton().getText())) {
+		if (command.equals("Retrun menu")) {
 			menu.getAddMovieMenu().getAddMovieFrame().dispose();
 			initMenu();
 		}
 		// Creacion pelicula - Crear película
-		if (command.equals(menu.getAddMovieMenu().getCreateButton().getText())) {
+		if (command.equals("Create")) {
 			Movie movie = new Movie();
 			movie.setNameMovies(menu.getAddMovieMenu().getNameMovie().getText());
 			movie.setDescription(menu.getAddMovieMenu().getDescriptionMovie().getText());
@@ -71,6 +71,11 @@ public class Presenter implements ActionListener {
 			System.out.println(cinema.getMovies());
 			menu.getAddMovieMenu().getAddMovieFrame().dispose();
 			addMenu();
+		}
+		// Creacion pelicula - Eliminar película
+		if(command.equals("Delete")) {
+			DeleteWindow deleteWindow= new DeleteWindow();
+			deleteWindow.setVisible(true);
 		}
 	}
 

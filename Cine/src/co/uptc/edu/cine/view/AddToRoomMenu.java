@@ -2,6 +2,7 @@ package co.uptc.edu.cine.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -22,7 +23,8 @@ public class AddToRoomMenu {
     private Color mainColor;
     private ImageIcon mainIcon;
 
-    public AddToRoomMenu() {
+    public AddToRoomMenu(ActionListener actionListener) {
+        this.actionListener = actionListener;
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -35,9 +37,7 @@ public class AddToRoomMenu {
         roomFrame.setResizable(false);
         roomFrame.setIconImage(mainIcon.getImage());
 
-        // createRoom();
-        // createRoomOption();
-        addMovieToRoomOption(new Cinema());
+        createRoom();
         roomFrame.setVisible(true);
 
     }
@@ -127,7 +127,7 @@ public class AddToRoomMenu {
         titleLabel = new JLabel("Añadir Película a sala");
         titleLabel.setFont(mainFont);
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(150, 50, 400, 60);
+        titleLabel.setBounds(150, 50, 550, 60);
         roomPanel.add(titleLabel);
 
         selectRoomNumber = new JLabel("Elija numero de sala:");
@@ -218,6 +218,6 @@ public class AddToRoomMenu {
     }
 
     public static void main(String[] args) {
-        new AddToRoomMenu();
+        new AddToRoomMenu(null);
     }
 }
