@@ -121,7 +121,8 @@ public class TicketSale {
         totalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String quantityTicketsString = JOptionPane.showInputDialog(ticketsFrame, "Ingrese la cantidad de boletas:");
+                String quantityTicketsString = JOptionPane.showInputDialog(ticketsFrame,
+                        "Ingrese la cantidad de boletas:");
                 if (quantityTicketsString != null && !quantityTicketsString.isEmpty()) {
                     try {
                         int quantityTickets = Integer.parseInt(quantityTicketsString);
@@ -130,9 +131,17 @@ public class TicketSale {
                         MovieFormat movieFormat = MovieFormat.valueOf(formatComboBox.getSelectedItem().toString());
 
                         int total = cinema.buyTickets(quantityTickets, roomNumber, movieNumber, movieFormat);
-                        JOptionPane.showMessageDialog(ticketsFrame, "El total es: " + total, "Total", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(ticketsFrame, "El total es: " + total, "Total",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        Ticket ticket = new Ticket();
+                        ticket.generateTicket(quantityTicketsString, roomNumber, quantityTicketsString, movieNumber,
+                                quantityTicketsString, quantityTicketsString, quantityTicketsString,
+                                quantityTicketsString, total);
+
                     } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(ticketsFrame, "Ingrese un valor válido para la cantidad de boletas", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(ticketsFrame,
+                                "Ingrese un valor válido para la cantidad de boletas", "Error",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -176,9 +185,5 @@ public class TicketSale {
 
     public JLabel getTitleLabel() {
         return titleLabel;
-    }
-
-    public static void main(String[] args) {
-        new TicketSale(null);
     }
 }

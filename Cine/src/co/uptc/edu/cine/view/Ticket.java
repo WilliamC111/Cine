@@ -143,4 +143,19 @@ public class Ticket extends JFrame {
         btnValidate.setBounds(52, 585, 108, 28);
         panel.add(btnValidate);
     }
+
+    public void generateTicket(String nameMovie, int numeroSala, String nameUser, int idUser, String durationPelicula,
+            String ubication, String dateSale, String datFunction, int total) {
+        lblNameMovie.setText(nameMovie);
+        lblNumeroSala.setText("" + numeroSala);
+        lblNameUser.setText(nameUser);
+        lblIduser.setText("" + idUser);
+        lblDurationpelicula.setText(durationPelicula);
+        lblUbicacion.setText(ubication);
+        lblDate.setText(dateSale);
+        lblDate_1.setText(datFunction);
+        lblTotal_2.setText(total + "");
+        this.repaint();
+
+    }
 }

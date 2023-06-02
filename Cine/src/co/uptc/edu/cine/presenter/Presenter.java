@@ -51,11 +51,11 @@ public class Presenter implements ActionListener {
 			menu.viewMovieLists();
 		}
 		// Venta Boletas
-		if(command.equals("tickets")){
-			TicketSale ticketSale= new TicketSale(this);
+		if (command.equals("tickets")) {
+			TicketSale ticketSale = new TicketSale(this);
 			ticketSale.getTicketsFrame().setVisible(true);
-			 menu.getMainFrame().setVisible(false);
-		 }
+			menu.getMainFrame().setVisible(false);
+		}
 		// Creacion película
 		if (command.equals("Create movie")) {
 			menu.getAddMovieMenu().addMovieOption();
@@ -103,7 +103,8 @@ public class Presenter implements ActionListener {
 		// Creacion pelicula - crear sala - crear
 		if (command.equals("Create this room")) {
 			Room room = new Room();
-			short roomNumber = Short.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText());
+			short roomNumber = Short
+					.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText());
 			boolean roomExists = false;
 			for (int i = 0; i < cinema.getRooms().size(); i++) {
 				if (cinema.getRooms().get(i).getRoomNumber() == roomNumber) {
@@ -127,7 +128,32 @@ public class Presenter implements ActionListener {
 		}
 		// Creacion pelicula - añadir pelicula a sala - añadir
 		if (command.equals("Add movie in room")) {
-			
+			String selectedMovie = menu.getAddMovieMenu().getAddToRoomMenu().getMovieBox().getSelectedItem().toString();
+			boolean movieExists = false;
+
+			for (Room room : cinema.getRooms()) {
+				for (Movie movie : room.getMovies()) {
+					if (movie.getNameMovies().equals(selectedMovie)) {
+						movieExists = true;
+						break;
+					}
+				}
+				if (movieExists) {
+					break;
+				}
+			}
+			if (movieExists) {
+				JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
+						"Error, la película ya está añadida en alguna sala", "ERROR", JOptionPane.ERROR_MESSAGE);
+			} else {
+				short roomNumber = Short.parseShort(
+						menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberBox().getSelectedItem().toString());
+				int movieIndex = menu.getAddMovieMenu().getAddToRoomMenu().getMovieBox().getSelectedIndex();
+				cinema.addMovieForRoom(roomNumber, movieIndex);
+				JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
+						"Película añadida con éxito", "ÉXITO", JOptionPane.INFORMATION_MESSAGE);
+			}
+			System.out.println(cinema.getRooms());
 		}
 		// Creacion pelicula - añadir pelicula a sala - volver
 		if (command.equals("Back menu")) {
