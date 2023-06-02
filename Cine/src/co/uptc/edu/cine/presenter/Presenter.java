@@ -13,6 +13,7 @@ public class Presenter implements ActionListener {
 	Customer customer = new Customer();
 	View view = new View();
 	DeleteWindow dWindow = new DeleteWindow(this);
+	TicketSale ticketSale = new TicketSale(this, cinema);
 	private MainMenu menu;
 
 	public Presenter() {
@@ -52,9 +53,12 @@ public class Presenter implements ActionListener {
 		}
 		// Venta Boletas
 		if (command.equals("tickets")) {
-			TicketSale ticketSale = new TicketSale(this, cinema);
 			ticketSale.getTicketsFrame().setVisible(true);
 			menu.getMainFrame().setVisible(false);
+		}
+		if (command.equals("Retrun menu2")) {
+			ticketSale.getTicketsFrame().setVisible(false);
+			menu.getMainFrame().setVisible(true);
 		}
 		// Creacion película
 		if (command.equals("Create movie")) {
@@ -149,7 +153,8 @@ public class Presenter implements ActionListener {
 				short roomNumber = Short.parseShort(
 						menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberBox().getSelectedItem().toString());
 				int movieIndex = menu.getAddMovieMenu().getAddToRoomMenu().getMovieBox().getSelectedIndex();
-				cinema.addMovieForRoom(roomNumber, movieIndex);
+				cinema.addMovieForRoom(roomNumber, movieIndex + 1);
+				System.out.println(roomNumber + " " + movieIndex);
 				JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
 						"Película añadida con éxito", "ÉXITO", JOptionPane.INFORMATION_MESSAGE);
 			}

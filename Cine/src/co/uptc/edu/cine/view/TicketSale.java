@@ -36,8 +36,8 @@ public class TicketSale {
     private Cinema cinema;
 
     public TicketSale(ActionListener actionListener, Cinema cinema) {
+        this.actionListener = actionListener;
         this.cinema = cinema;
-
 
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
@@ -51,12 +51,10 @@ public class TicketSale {
         ticketsFrame.setResizable(false);
         ticketsFrame.setIconImage(mainIcon.getImage());
 
-        sellTickets(cinema);
-
-        ticketsFrame.setVisible(true);
+        sellTickets(cinema, actionListener);
     }
 
-    public void sellTickets(Cinema cinema) {
+    public void sellTickets(Cinema cinema, ActionListener listener) {
         ticketsPanel = new JPanel();
         ticketsPanel.setLayout(null);
         ticketsPanel.setBackground(mainColor);
@@ -107,6 +105,8 @@ public class TicketSale {
 
         backButton = new JButton("Volver");
         backButton.setBounds(500, 330, 200, 30);
+        backButton.setActionCommand("Retrun menu2");
+        backButton.addActionListener(listener);
         ticketsPanel.add(backButton);
 
         ticketsFrame.getContentPane().add(ticketsPanel);
@@ -121,10 +121,13 @@ public class TicketSale {
                 ArrayList<Integer> availableTickets = cinema.getAvailableTickets(roomNumber, movieNumber, movieFormat);
 
                 StringBuilder message = new StringBuilder("Boletas Disponibles:\n");
-                for (Integer ticket : availableTickets) {
-                    message.append(ticket).append("\n");
+                if (availableTickets != null) {
+                    for (int ticket : availableTickets) {
+                        message.append(ticket).append("\n");
+                    }
+                } else {
+                    message.append("No hay boletas disponibles");
                 }
-
                 JOptionPane.showMessageDialog(ticketsFrame, message.toString(), "Boletas Disponibles",
                         JOptionPane.INFORMATION_MESSAGE);
             }
@@ -160,14 +163,6 @@ public class TicketSale {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 }
-            }
-        });
-
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu(actionListener);
-                ticketsFrame.dispose();
             }
         });
     }
