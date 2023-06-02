@@ -50,9 +50,7 @@ public class TicketSale {
         ticketsFrame.setIconImage(mainIcon.getImage());
 
         cinema = new Cinema();
-
         sellTickets();
-
         ticketsFrame.setVisible(true);
     }
 
@@ -98,11 +96,11 @@ public class TicketSale {
         ticketsPanel.add(formatComboBox);
 
         compareTicketsButton = new JButton("Comprar Boletas");
-        compareTicketsButton.setBounds(500, 150, 200, 30);
+        compareTicketsButton.setBounds(500, 220, 200, 30);
         ticketsPanel.add(compareTicketsButton);
 
         totalButton = new JButton("Total");
-        totalButton.setBounds(500, 250, 200, 30);
+        totalButton.setBounds(500, 250, 200, 70);
         ticketsPanel.add(totalButton);
 
         ticketsFrame.getContentPane().add(ticketsPanel);
