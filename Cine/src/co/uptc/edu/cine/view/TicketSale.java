@@ -14,6 +14,8 @@ import co.uptc.edu.cine.model.MovieFormat;
 import co.uptc.edu.cine.model.Room;
 
 public class TicketSale {
+    private ActionListener actionListener;
+
     private JFrame ticketsFrame;
     private JPanel ticketsPanel;
     private JLabel titleLabel;
@@ -25,6 +27,7 @@ public class TicketSale {
     private JComboBox<String> formatComboBox;
     private JButton compareTicketsButton;
     private JButton totalButton;
+    private JButton backButton; // Botón para volver a MainMenu
 
     private Font mainFont;
     private Color mainColor;
@@ -33,6 +36,8 @@ public class TicketSale {
     private Cinema cinema;
 
     public TicketSale(ActionListener actionListener) {
+        this.actionListener = actionListener;
+
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -44,8 +49,10 @@ public class TicketSale {
         ticketsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ticketsFrame.setResizable(false);
         ticketsFrame.setIconImage(mainIcon.getImage());
+
         cinema = new Cinema();
         sellTickets();
+        ticketsFrame.setVisible(true);
     }
 
     public void sellTickets() {
@@ -97,6 +104,10 @@ public class TicketSale {
         totalButton.setBounds(500, 250, 200, 70);
         ticketsPanel.add(totalButton);
 
+        backButton = new JButton("Volver");
+        backButton.setBounds(500, 330, 200, 30);
+        ticketsPanel.add(backButton);
+
         ticketsFrame.getContentPane().add(ticketsPanel);
 
         compareTicketsButton.addActionListener(new ActionListener() {
@@ -146,6 +157,14 @@ public class TicketSale {
                 }
             }
         });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainMenu mainMenu = new MainMenu(actionListener);
+                ticketsFrame.dispose(); 
+            }
+        });
     }
 
     private String[] getMovieNamesFromCinema() {
@@ -174,6 +193,7 @@ public class TicketSale {
         }
         return formatNames;
     }
+
 
     public JFrame getTicketsFrame() {
         return ticketsFrame;

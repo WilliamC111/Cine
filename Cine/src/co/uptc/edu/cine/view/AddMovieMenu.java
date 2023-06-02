@@ -780,7 +780,7 @@ public class AddMovieMenu {
         createButton.setForeground(Color.WHITE);
         createButton.setBackground(mainColor);
         createButton.setFocusPainted(false);
-        createButton.setBounds(800, 780, 120, 40);
+        createButton.setBounds(800, 620, 120, 60);
         createButton.setActionCommand("Create");
         createButton.addActionListener(actionListener);
         addMoviePanel.add(createButton);
