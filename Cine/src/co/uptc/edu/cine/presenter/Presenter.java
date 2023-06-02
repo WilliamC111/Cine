@@ -14,7 +14,7 @@ public class Presenter implements ActionListener {
 	View view = new View();
 	DeleteWindow dWindow = new DeleteWindow(this);
 	DataTableFrame dataFrame = new DataTableFrame(this);
-	TicketSale ticketSale = new TicketSale(this, cinema, dataFrame);
+	TicketSale ticketSale = new TicketSale(this, this.cinema, dataFrame);
 	private MainMenu menu;
 
 	public Presenter() {
@@ -54,6 +54,8 @@ public class Presenter implements ActionListener {
 		}
 		// Venta Boletas
 		if (command.equals("tickets")) {
+			ticketSale.getMovieNamesFromCinema(cinema);
+			ticketSale.getRoomNumbersFromCinema(cinema);
 			ticketSale.getTicketsFrame().setVisible(true);
 			menu.getMainFrame().setVisible(false);
 		}

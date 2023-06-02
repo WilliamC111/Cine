@@ -39,7 +39,6 @@ public class TicketSale {
 
     public TicketSale(ActionListener actionListener, Cinema cinema, DataTableFrame datatable) {
         this.cinema = cinema;
-
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -71,7 +70,7 @@ public class TicketSale {
         chooseMovieLabel.setForeground(Color.WHITE);
         ticketsPanel.add(chooseMovieLabel);
 
-        String[] movieOptions = getMovieNamesFromCinema();
+        String[] movieOptions = getMovieNamesFromCinema(cinema);
         movieComboBox = new JComboBox<>(movieOptions);
         movieComboBox.setBounds(80, 150, 200, 30);
         ticketsPanel.add(movieComboBox);
@@ -81,7 +80,7 @@ public class TicketSale {
         chooseRoomLabel.setForeground(Color.WHITE);
         ticketsPanel.add(chooseRoomLabel);
 
-        String[] roomOptions = getRoomNumbersFromCinema();
+        String[] roomOptions = getRoomNumbersFromCinema(cinema);
         roomComboBox = new JComboBox<>(roomOptions);
         roomComboBox.setBounds(80, 250, 200, 30);
         ticketsPanel.add(roomComboBox);
@@ -126,7 +125,7 @@ public class TicketSale {
                     for (int ticket : availableTickets) {
                         message.append(ticket).append("\n");
                     }
-                }else{
+                } else {
                     message.append("No hay boletas disponibles");
                 }
 
@@ -184,7 +183,6 @@ public class TicketSale {
             String fila = "Nombre pelicula: " + nombrePelicula + "\nhora de compra: " + horaCompra + "\nTotal: " + total
                     + "\n-----------------------------";
 
-            // Escribir la fila en el archivo
             writer.write(fila);
             writer.newLine();
         } catch (IOException e) {
@@ -202,7 +200,7 @@ public class TicketSale {
         return aux;
     }
 
-    private String[] getMovieNamesFromCinema() {
+    public String[] getMovieNamesFromCinema(Cinema cinema) {
         ArrayList<Movie> movies = cinema.getMovies();
         String[] movieNames = new String[movies.size()];
         for (int i = 0; i < movies.size(); i++) {
@@ -211,7 +209,7 @@ public class TicketSale {
         return movieNames;
     }
 
-    private String[] getRoomNumbersFromCinema() {
+    public String[] getRoomNumbersFromCinema(Cinema cinema) {
         ArrayList<Room> rooms = cinema.getRooms();
         String[] roomNumbers = new String[rooms.size()];
         for (int i = 0; i < rooms.size(); i++) {
