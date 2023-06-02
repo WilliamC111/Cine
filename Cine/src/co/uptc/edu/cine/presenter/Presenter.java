@@ -50,11 +50,12 @@ public class Presenter implements ActionListener {
 			menu.getMainFrame().dispose();
 			menu.viewMovieLists();
 		}
-		//Venta Boletas
+		// Venta Boletas
 		if(command.equals("tickets")){
-			menu.getMainFrame().dispose();
-			menu.getTicketsPanel;
-		}
+			TicketSale ticketSale= new TicketSale(this);
+			ticketSale.getTicketsFrame().setVisible(true);
+			 menu.getMainFrame().setVisible(false);
+		 }
 		// Creacion película
 		if (command.equals("Create movie")) {
 			menu.getAddMovieMenu().addMovieOption();
@@ -102,27 +103,34 @@ public class Presenter implements ActionListener {
 		// Creacion pelicula - crear sala - crear
 		if (command.equals("Create this room")) {
 			Room room = new Room();
+			short roomNumber = Short.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText());
+			boolean roomExists = false;
 			for (int i = 0; i < cinema.getRooms().size(); i++) {
-				if (cinema.getRooms().get(i).getRoomNumber() == Short.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText())) {
-					JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
-							"Error, ya existe una sala con ese número", "ERROR", JOptionPane.ERROR_MESSAGE);
-					return;
-				} else {
-					room.setRoomNumber(Short.parseShort(menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberField().getText()));
-					cinema.setRooms(room);
+				if (cinema.getRooms().get(i).getRoomNumber() == roomNumber) {
+					roomExists = true;
+					break;
 				}
+			}
+			if (roomExists) {
+				JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
+						"Error, ya existe una sala con ese número", "ERROR", JOptionPane.ERROR_MESSAGE);
+			} else {
+				room.setRoomNumber(roomNumber);
+				cinema.addRoom(room);
+				JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
+						"Sala creada con exito", "EXITO", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 		// Creacion pelicula - añadir pelicula a sala
-		if(command.equals("Add movie to room")){
+		if (command.equals("Add movie to room")) {
 			menu.getAddMovieMenu().getAddToRoomMenu().addMovieToRoomOption(cinema);
 		}
 		// Creacion pelicula - añadir pelicula a sala - añadir
-		if(command.equals("")){
+		if (command.equals("Add movie in room")) {
 			
 		}
 		// Creacion pelicula - añadir pelicula a sala - volver
-		if(command.equals("Back menu")){
+		if (command.equals("Back menu")) {
 			menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame().dispose();
 			addMenu();
 		}

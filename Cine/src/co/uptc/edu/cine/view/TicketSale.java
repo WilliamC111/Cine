@@ -14,8 +14,6 @@ import co.uptc.edu.cine.model.MovieFormat;
 import co.uptc.edu.cine.model.Room;
 
 public class TicketSale {
-    private ActionListener actionListener;
-
     private JFrame ticketsFrame;
     private JPanel ticketsPanel;
     private JLabel titleLabel;
@@ -35,8 +33,6 @@ public class TicketSale {
     private Cinema cinema;
 
     public TicketSale(ActionListener actionListener) {
-        this.actionListener = actionListener;
-
         mainFont = new Font("Arial", Font.BOLD, 50);
         mainColor = new Color(0, 0, 128);
         mainIcon = new ImageIcon("Cine/Cine/src/resources/Icons/Logo.png");
@@ -48,10 +44,8 @@ public class TicketSale {
         ticketsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ticketsFrame.setResizable(false);
         ticketsFrame.setIconImage(mainIcon.getImage());
-
         cinema = new Cinema();
         sellTickets();
-        ticketsFrame.setVisible(true);
     }
 
     public void sellTickets() {

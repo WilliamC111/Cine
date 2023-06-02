@@ -25,6 +25,7 @@ public class MainMenu {
     private JButton loginButton, addButton,billBoardButton, saleButton, historyButton;
     private ImageViewer imageViewer;
     private AddMovieMenu addMovieMenu;
+
  
     public MainMenu(ActionListener actionListener) {
         this.actionListener = actionListener;
@@ -42,7 +43,6 @@ public class MainMenu {
         mainFrame.setIconImage(mainIcon.getImage());
 
         InitialMenu();
-
         mainFrame.setVisible(true);
     }
 
@@ -121,6 +121,7 @@ public class MainMenu {
         mainPanel.add(loginButton, loginButtonConstraints);
 
         mainFrame.setContentPane(mainPanel);
+
     }
 
     public void mainMenu() {
@@ -188,7 +189,8 @@ public class MainMenu {
         saleButtonConstraints.gridwidth = 0;
         saleButtonConstraints.anchor = GridBagConstraints.CENTER;
         saleButtonConstraints.insets.bottom = 20;
-        billBoardButton.setActionCommand("tickets");
+        saleButton.setActionCommand("tickets");
+        saleButton.addActionListener(actionListener);
         mainPanel.add(saleButton, saleButtonConstraints);
 
         historyButton = new JButton("Historial de Ventas");
@@ -224,7 +226,7 @@ public class MainMenu {
     	addMovieMenu.chargeData(movies,deleteWindow);
     }
 
-    public JFrame getMainFrame() {
+	public JFrame getMainFrame() {
         return mainFrame;
     }
 

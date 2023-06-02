@@ -126,7 +126,8 @@ public class AddToRoomMenu {
     public void addMovieToRoomOption(Cinema cinema) {
         roomFrame = new JFrame();
         roomFrame.setTitle("Añadir Película a Sala");
-        roomFrame.setSize(600, 400);
+        roomFrame.setSize(700, 400);
+        roomFrame.setLocationRelativeTo(null);
 
         roomPanel = new JPanel();
         roomPanel.setLayout(null);
@@ -135,7 +136,7 @@ public class AddToRoomMenu {
         titleLabel = new JLabel("Añadir Película a sala");
         titleLabel.setFont(mainFont);
         titleLabel.setForeground(Color.WHITE);
-        titleLabel.setBounds(70, 50, 500, 60);
+        titleLabel.setBounds(70, 50, 550, 60);
         roomPanel.add(titleLabel);
 
         selectRoomNumber = new JLabel("Elija numero de sala:");
@@ -177,7 +178,7 @@ public class AddToRoomMenu {
         roomPanel.add(movieBox);
 
         createMovieinRoomButton = new JButton("Añadir");
-        createMovieinRoomButton.setBounds(220, 300, 100, 30);
+        createMovieinRoomButton.setBounds(285, 300, 100, 40);
         createMovieinRoomButton.setFont(new Font("Arial", Font.BOLD, 20));
         createMovieinRoomButton.setForeground(mainColor);
         createMovieinRoomButton.setFocusPainted(false);
@@ -187,8 +188,6 @@ public class AddToRoomMenu {
 
         roomFrame.setContentPane(roomPanel);
         roomFrame.setVisible(true);
-
-        System.out.println(cinema.getRooms());
     }
 
     public JFrame getRoomFrame() {
