@@ -13,7 +13,8 @@ public class Presenter implements ActionListener {
 	Customer customer = new Customer();
 	View view = new View();
 	DeleteWindow dWindow = new DeleteWindow(this);
-	TicketSale ticketSale = new TicketSale(this, cinema);
+	DataTableFrame dataFrame = new DataTableFrame(this);
+	TicketSale ticketSale = new TicketSale(this, cinema, dataFrame);
 	private MainMenu menu;
 
 	public Presenter() {
@@ -88,10 +89,19 @@ public class Presenter implements ActionListener {
 			menu.getAddMovieMenu().getAddMovieFrame().dispose();
 			addMenu();
 		}
+
 		// Creacion pelicula - Eliminar película
 		if (command.equals("Delete")) {
 			menu.chargeDataDeleteWindow(cinema.getMovies(), dWindow);
 			dWindow.setVisible(true);
+		}
+		if (command.equals("Historial")) {
+			dataFrame.setVisible(true);
+			menu.getMainFrame().setVisible(false);
+		}
+		if (command.equals("Validate")) {
+			dataFrame.setVisible(false);
+			menu.getMainFrame().setVisible(true);
 		}
 		if (command.equals("Delete movie")) {
 			menu.deleteMovie(cinema.getMovies(), dWindow);
@@ -154,7 +164,6 @@ public class Presenter implements ActionListener {
 						menu.getAddMovieMenu().getAddToRoomMenu().getRoomNumberBox().getSelectedItem().toString());
 				int movieIndex = menu.getAddMovieMenu().getAddToRoomMenu().getMovieBox().getSelectedIndex();
 				cinema.addMovieForRoom(roomNumber, movieIndex + 1);
-				System.out.println(roomNumber + " " + movieIndex);
 				JOptionPane.showMessageDialog(menu.getAddMovieMenu().getAddToRoomMenu().getRoomFrame(),
 						"Película añadida con éxito", "ÉXITO", JOptionPane.INFORMATION_MESSAGE);
 			}

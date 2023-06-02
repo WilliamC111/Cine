@@ -5,7 +5,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.*;
 
 import co.uptc.edu.cine.model.Cinema;
@@ -35,8 +37,7 @@ public class TicketSale {
 
     private Cinema cinema;
 
-    public TicketSale(ActionListener actionListener, Cinema cinema) {
-        this.actionListener = actionListener;
+    public TicketSale(ActionListener actionListener, Cinema cinema, DataTableFrame datatable) {
         this.cinema = cinema;
 
         mainFont = new Font("Arial", Font.BOLD, 50);
@@ -51,10 +52,10 @@ public class TicketSale {
         ticketsFrame.setResizable(false);
         ticketsFrame.setIconImage(mainIcon.getImage());
 
-        sellTickets(cinema, actionListener);
+        sellTickets(cinema, actionListener, datatable);
     }
 
-    public void sellTickets(Cinema cinema, ActionListener listener) {
+    public void sellTickets(Cinema cinema, ActionListener listener, DataTableFrame datatable) {
         ticketsPanel = new JPanel();
         ticketsPanel.setLayout(null);
         ticketsPanel.setBackground(mainColor);
@@ -125,9 +126,10 @@ public class TicketSale {
                     for (int ticket : availableTickets) {
                         message.append(ticket).append("\n");
                     }
-                } else {
+                }else{
                     message.append("No hay boletas disponibles");
                 }
+
                 JOptionPane.showMessageDialog(ticketsFrame, message.toString(), "Boletas Disponibles",
                         JOptionPane.INFORMATION_MESSAGE);
             }
@@ -140,6 +142,7 @@ public class TicketSale {
                         "Ingrese la cantidad de boletas:");
                 if (quantityTicketsString != null && !quantityTicketsString.isEmpty()) {
                     try {
+
                         int quantityTickets = Integer.parseInt(quantityTicketsString);
                         int roomNumber = Integer.parseInt(roomComboBox.getSelectedItem().toString());
                         int movieNumber = movieComboBox.getSelectedIndex() + 1;
@@ -150,12 +153,18 @@ public class TicketSale {
                                 JOptionPane.INFORMATION_MESSAGE);
 
                         Ticket ticket = new Ticket();
+                        ticket.setVisible(false);
                         ticket.generateTicket((String) movieComboBox.getSelectedItem(), roomNumber,
                                 movieFormat.toString(), quantityTickets,
                                 durationMovie((String) movieComboBox.getSelectedItem()), quantityTicketsString,
                                 cinema.getTimeMovie().timeFilm(),
                                 cinema.getTimeMovie().getFormatter(), total);
                         ticket.setVisible(true);
+
+                        guardarDatosEnArchivo((String) movieComboBox.getSelectedItem(),
+                                cinema.getTimeMovie().timeFilm(), total);
+                        datatable.agregarFila((String) movieComboBox.getSelectedItem(),
+                                cinema.getTimeMovie().timeFilm(), total);
 
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(ticketsFrame,
@@ -165,6 +174,22 @@ public class TicketSale {
                 }
             }
         });
+    }
+
+    public void guardarDatosEnArchivo(String nombrePelicula, String horaCompra, int total) {
+        String rutaArchivo = "datos.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+            // Crear la fila de la tabla con los datos a guardar
+            String fila = "Nombre pelicula: " + nombrePelicula + "\nhora de compra: " + horaCompra + "\nTotal: " + total
+                    + "\n-----------------------------";
+
+            // Escribir la fila en el archivo
+            writer.write(fila);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String durationMovie(String option) {

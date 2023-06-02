@@ -22,11 +22,10 @@ public class MainMenu {
     private JLabel titleLabel, loginLabel, userLabel, passwordLabel;
     private JTextField userText;
     private JPasswordField passwordText;
-    private JButton loginButton, addButton,billBoardButton, saleButton, historyButton;
+    private JButton loginButton, addButton, billBoardButton, saleButton, historyButton;
     private ImageViewer imageViewer;
     private AddMovieMenu addMovieMenu;
 
- 
     public MainMenu(ActionListener actionListener) {
         this.actionListener = actionListener;
 
@@ -204,6 +203,8 @@ public class MainMenu {
         historyButtonConstraints.gridwidth = 0;
         historyButtonConstraints.anchor = GridBagConstraints.CENTER;
         historyButtonConstraints.insets.bottom = 20;
+        historyButton.setActionCommand("Historial");
+        historyButton.addActionListener(actionListener);
         mainPanel.add(historyButton, historyButtonConstraints);
 
         mainFrame.setContentPane(mainPanel);
@@ -214,19 +215,19 @@ public class MainMenu {
         addMovieMenu = new AddMovieMenu(actionListener);
     }
 
-    public void viewMovieLists(){
+    public void viewMovieLists() {
         imageViewer = new ImageViewer();
     }
 
-    public void deleteMovie(ArrayList<Movie> movies,DeleteWindow deleteWindow) {
-    	addMovieMenu.deleteMethod(movies,deleteWindow);
+    public void deleteMovie(ArrayList<Movie> movies, DeleteWindow deleteWindow) {
+        addMovieMenu.deleteMethod(movies, deleteWindow);
     }
 
-    public void chargeDataDeleteWindow(ArrayList<Movie> movies,DeleteWindow deleteWindow) {
-    	addMovieMenu.chargeData(movies,deleteWindow);
+    public void chargeDataDeleteWindow(ArrayList<Movie> movies, DeleteWindow deleteWindow) {
+        addMovieMenu.chargeData(movies, deleteWindow);
     }
 
-	public JFrame getMainFrame() {
+    public JFrame getMainFrame() {
         return mainFrame;
     }
 
@@ -235,7 +236,7 @@ public class MainMenu {
     }
 
     public AddMovieMenu getAddMovieMenu() {
-        return  addMovieMenu;
+        return addMovieMenu;
     }
 
     public ImageViewer getImageViewer() {
@@ -273,10 +274,11 @@ public class MainMenu {
     public JButton getAddButton() {
         return addButton;
     }
-    
-     public JButton getBillBoardButton(){
-     return billBoardButton;
+
+    public JButton getBillBoardButton() {
+        return billBoardButton;
     }
+
     public JButton getSaleButton() {
         return saleButton;
     }
@@ -285,6 +287,5 @@ public class MainMenu {
         return historyButton;
     }
 
-    public void getTicketsFrame() {
-    }
+    
 }
